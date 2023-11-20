@@ -4,6 +4,8 @@
  */
 package Proyecto;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author agust
@@ -15,6 +17,7 @@ public class Probabilidades extends javax.swing.JFrame {
      */
     public Probabilidades() {
         initComponents();
+        setLocationRelativeTo(null); 
     }
 
     /**
@@ -26,21 +29,63 @@ public class Probabilidades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        iniciarBoton = new javax.swing.JButton();
+        salirBoton = new javax.swing.JButton();
+        creditosBoton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iniciarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/INICIAR.png"))); // NOI18N
+        iniciarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarBotonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(iniciarBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 340, 120));
+
+        salirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/SALIR.png"))); // NOI18N
+        salirBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBotonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salirBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, 340, 120));
+
+        creditosBoton.setBackground(new java.awt.Color(153, 255, 255));
+        creditosBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/CREDITOS.png"))); // NOI18N
+        creditosBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditosBotonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(creditosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 340, 120));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/PROBABILIDADES.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void iniciarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBotonActionPerformed
+        // TODO add your handling code here:
+        Iniciar ventanaProbabilidades = new Iniciar();
+        ventanaProbabilidades.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_iniciarBotonActionPerformed
+
+    private void creditosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosBotonActionPerformed
+        // TODO add your handling code here:
+        Creditos ventanaProbabilidades = new Creditos();
+        ventanaProbabilidades.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_creditosBotonActionPerformed
+
+    private void salirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBotonActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_salirBotonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +123,9 @@ public class Probabilidades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton creditosBoton;
+    private javax.swing.JButton iniciarBoton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton salirBoton;
     // End of variables declaration//GEN-END:variables
 }
