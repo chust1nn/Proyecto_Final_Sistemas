@@ -11,7 +11,8 @@ import javax.swing.JFrame;
  * @author agust
  */
 public class Probabilidades extends javax.swing.JFrame {
-
+    
+    public static Probabilidades instanciaProbabilidades;
     /**
      * Creates new form Probabilidades
      */
@@ -29,10 +30,78 @@ public class Probabilidades extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        iniciarFrame = new javax.swing.JFrame();
+        atrasBoton = new javax.swing.JButton();
+        historiaBoton = new javax.swing.JButton();
+        teoriaBoton = new javax.swing.JButton();
+        ejerciciosBoton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        creditosFrame = new javax.swing.JFrame();
+        atrasBoton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         iniciarBoton = new javax.swing.JButton();
         salirBoton = new javax.swing.JButton();
         creditosBoton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+
+        iniciarFrame.setMaximumSize(new java.awt.Dimension(1280, 720));
+        iniciarFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBotonActionPerformed(evt);
+            }
+        });
+        iniciarFrame.getContentPane().add(atrasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
+
+        historiaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/HISTORIA.png"))); // NOI18N
+        historiaBoton.setMaximumSize(new java.awt.Dimension(340, 120));
+        historiaBoton.setMinimumSize(new java.awt.Dimension(340, 120));
+        historiaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historiaBotonActionPerformed(evt);
+            }
+        });
+        iniciarFrame.getContentPane().add(historiaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 340, 120));
+
+        teoriaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/TEORIA.png"))); // NOI18N
+        teoriaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                teoriaBotonActionPerformed(evt);
+            }
+        });
+        iniciarFrame.getContentPane().add(teoriaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 340, 120));
+
+        ejerciciosBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/EJERCICIOS.png"))); // NOI18N
+        ejerciciosBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejerciciosBotonActionPerformed(evt);
+            }
+        });
+        iniciarFrame.getContentPane().add(ejerciciosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 340, 120));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/PROBABILIDADES background.png"))); // NOI18N
+        iniciarFrame.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        creditosFrame.setMaximumSize(new java.awt.Dimension(1280, 720));
+        creditosFrame.setMinimumSize(new java.awt.Dimension(1280, 720));
+        creditosFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton1.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton1.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBoton1ActionPerformed(evt);
+            }
+        });
+        creditosFrame.getContentPane().add(atrasBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/CREDITOS into.png"))); // NOI18N
+        creditosFrame.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,15 +139,17 @@ public class Probabilidades extends javax.swing.JFrame {
 
     private void iniciarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBotonActionPerformed
         // TODO add your handling code here:
-        Iniciar ventanaProbabilidades = new Iniciar();
-        ventanaProbabilidades.setVisible(true);
+        iniciarFrame.setVisible(true);
+        iniciarFrame.setSize(1280, 720);
+        iniciarFrame.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_iniciarBotonActionPerformed
 
     private void creditosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosBotonActionPerformed
         // TODO add your handling code here:
-        Creditos ventanaProbabilidades = new Creditos();
-        ventanaProbabilidades.setVisible(true);
+        creditosFrame.setVisible(true);
+        creditosFrame.setSize(1280, 720);
+        creditosFrame.setLocationRelativeTo(null);
         this.setVisible(false);
     }//GEN-LAST:event_creditosBotonActionPerformed
 
@@ -86,6 +157,31 @@ public class Probabilidades extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_salirBotonActionPerformed
+
+    private void atrasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBotonActionPerformed
+        // TODO add your handling code here:
+        iniciarFrame.setVisible(false);
+        this.setVisible(true);
+             
+    }//GEN-LAST:event_atrasBotonActionPerformed
+
+    private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_historiaBotonActionPerformed
+
+    private void teoriaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teoriaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_teoriaBotonActionPerformed
+
+    private void ejerciciosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejerciciosBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejerciciosBotonActionPerformed
+
+    private void atrasBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton1ActionPerformed
+        // TODO add your handling code here:
+        iniciarFrame.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_atrasBoton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,9 +219,18 @@ public class Probabilidades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atrasBoton;
+    private javax.swing.JButton atrasBoton1;
     private javax.swing.JButton creditosBoton;
+    private javax.swing.JFrame creditosFrame;
+    private javax.swing.JButton ejerciciosBoton;
+    private javax.swing.JButton historiaBoton;
     private javax.swing.JButton iniciarBoton;
+    private javax.swing.JFrame iniciarFrame;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton salirBoton;
+    private javax.swing.JButton teoriaBoton;
     // End of variables declaration//GEN-END:variables
 }
