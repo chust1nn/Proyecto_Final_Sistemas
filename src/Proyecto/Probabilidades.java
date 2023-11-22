@@ -1,49 +1,58 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Proyecto;
 
 import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author agust
+ * @authors Agustin Gonzalez y Leonardo Geldres
  */
 public class Probabilidades extends javax.swing.JFrame {
-    
-    public static Probabilidades instanciaProbabilidades;
-    /**
-     * Creates new form Probabilidades
-     */
+
     public Probabilidades() {
-        
         initComponents();
         this.setSize(1280, 760);
         setLocationRelativeTo(null); 
-        IconUtil.setIcon(this);
-    }
-    
-    public class IconUtil {
-        private static final Image Icon_Image = new ImageIcon(IconUtil.class.getResource("/Proyecto/Elementos_Proyecto/dados.png")).getImage();
+        logoProbabilidades.setIcon(this);
+    } 
+
+    public class logoProbabilidades {
+        private static final Image Icon_Image = new ImageIcon(logoProbabilidades.class.getResource("/Proyecto/Elementos_Proyecto/dados.png")).getImage();
     
         public static void setIcon(JFrame frame) {
             frame.setIconImage(Icon_Image);
         }
     }
     
-    public class FrameUtil {
-        public static void configureFrame(JFrame frame1, JFrame frame2) {
-            IconUtil.setIcon(frame1);
+    public class configFrame {
+        public static void especificacionesFrame(JFrame frame1, JFrame frame2) {
+            logoProbabilidades.setIcon(frame1);
             frame1.setVisible(true);
             frame1.setSize(1280, 760);
             frame1.setLocationRelativeTo(null);
             frame2.setVisible(false);
         }
+    } 
+    
+    //Esta funcion hace que al presionar "Salir" aparezca una ventana emergente para elegir si salir o no de la aplicacion.
+    private static void confirmarCierre(JFrame frame) {
+        //El texto que aparece en las opciones
+        String botones[] = {"Si, no quiero", "No, si quiero"};
+        //Para un icono personalizado dentro de la ventana emergente
+        ImageIcon emergencia = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/CONFIRMAR_CIERRE.png"));
+        //Con esto es posible que la ventana emergente salga luego dar click
+        int opcion = JOptionPane.showOptionDialog(frame, "¿Deseas cerrar la aplicación y no aprender probabilidades?", 
+                "Confirmar cierre", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, emergencia, botones, botones[0]);
+        //Para verificar la confirmacion de salir o no  
+        if (opcion == JOptionPane.YES_OPTION) {
+            // Realizar acciones antes de cerrar la aplicación si es necesario
+            System.exit(0);
+        }
+        // Si la opción es NO_OPTION o el usuario cierra el diálogo, no hace nada
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -746,293 +755,246 @@ public class Probabilidades extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
+   
     
     private void iniciarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, this);
+        configFrame.especificacionesFrame(iniciarFrame, this);
     }//GEN-LAST:event_iniciarBotonActionPerformed
 
     private void creditosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(creditosFrame);
-        FrameUtil.configureFrame(creditosFrame, this);
+        configFrame.especificacionesFrame(creditosFrame, this);
     }//GEN-LAST:event_creditosBotonActionPerformed
 
     private void salirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBotonActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        confirmarCierre(this);
     }//GEN-LAST:event_salirBotonActionPerformed
 
     private void atrasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(this);
-        FrameUtil.configureFrame(this, iniciarFrame);        
+        configFrame.especificacionesFrame(this, iniciarFrame);        
     }//GEN-LAST:event_atrasBotonActionPerformed
 
     private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame);
-        FrameUtil.configureFrame(historiaFrame, iniciarFrame);      
+        configFrame.especificacionesFrame(historiaFrame, iniciarFrame);      
     }//GEN-LAST:event_historiaBotonActionPerformed
 
     private void teoriaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teoriaBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(teoriaFrame);
-        FrameUtil.configureFrame(teoriaFrame, iniciarFrame);   
+        configFrame.especificacionesFrame(teoriaFrame, iniciarFrame);   
     }//GEN-LAST:event_teoriaBotonActionPerformed
 
     private void ejerciciosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejerciciosBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejerciciosFrame);
-        FrameUtil.configureFrame(ejerciciosFrame, iniciarFrame);    
+        configFrame.especificacionesFrame(ejerciciosFrame, iniciarFrame);    
     }//GEN-LAST:event_ejerciciosBotonActionPerformed
 
     private void atrasBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton1ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(this);
-        FrameUtil.configureFrame(this, creditosFrame);  
+        configFrame.especificacionesFrame(this, creditosFrame);  
     }//GEN-LAST:event_atrasBoton1ActionPerformed
 
     private void atrasBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton2ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, historiaFrame);  
+        configFrame.especificacionesFrame(iniciarFrame, historiaFrame);  
     }//GEN-LAST:event_atrasBoton2ActionPerformed
 
     private void pag2BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag2BotonActionPerformed
         // TODO add your handling code here: 
-        IconUtil.setIcon(historiaFrame);
-        FrameUtil.configureFrame(historiaFrame1, historiaFrame);  
+        configFrame.especificacionesFrame(historiaFrame1, historiaFrame);  
     }//GEN-LAST:event_pag2BotonActionPerformed
 
     private void pag3BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag3BotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame2);
-        FrameUtil.configureFrame(historiaFrame2, historiaFrame1);    
+        configFrame.especificacionesFrame(historiaFrame2, historiaFrame1);    
     }//GEN-LAST:event_pag3BotonActionPerformed
 
     private void pag1BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag1BotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame);
-        FrameUtil.configureFrame(historiaFrame, historiaFrame1);
+        configFrame.especificacionesFrame(historiaFrame, historiaFrame1);
     }//GEN-LAST:event_pag1BotonActionPerformed
 
     private void atrasBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton3ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, historiaFrame1);
+        configFrame.especificacionesFrame(iniciarFrame, historiaFrame1);
     }//GEN-LAST:event_atrasBoton3ActionPerformed
 
     private void atrasBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton4ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, historiaFrame2);
+        configFrame.especificacionesFrame(iniciarFrame, historiaFrame2);
     }//GEN-LAST:event_atrasBoton4ActionPerformed
 
     private void pag4BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag4BotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame3);
-        FrameUtil.configureFrame(historiaFrame3, historiaFrame2); 
+        configFrame.especificacionesFrame(historiaFrame3, historiaFrame2); 
     }//GEN-LAST:event_pag4BotonActionPerformed
 
     private void pag2Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag2Boton1ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame1);
-        FrameUtil.configureFrame(historiaFrame1, historiaFrame2);  
+        configFrame.especificacionesFrame(historiaFrame1, historiaFrame2);  
     }//GEN-LAST:event_pag2Boton1ActionPerformed
 
     private void atrasBoton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton5ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, historiaFrame3); 
+        configFrame.especificacionesFrame(iniciarFrame, historiaFrame3); 
     }//GEN-LAST:event_atrasBoton5ActionPerformed
 
     private void pag3Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag3Boton1ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame2);
-        FrameUtil.configureFrame(historiaFrame2, historiaFrame3);
+        configFrame.especificacionesFrame(historiaFrame2, historiaFrame3);
     }//GEN-LAST:event_pag3Boton1ActionPerformed
 
     private void pag5BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag5BotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame4);
-        FrameUtil.configureFrame(historiaFrame4, historiaFrame3); 
+        configFrame.especificacionesFrame(historiaFrame4, historiaFrame3); 
     }//GEN-LAST:event_pag5BotonActionPerformed
 
     private void atrasBoton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton6ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, historiaFrame4);
+        configFrame.especificacionesFrame(iniciarFrame, historiaFrame4);
     }//GEN-LAST:event_atrasBoton6ActionPerformed
 
     private void pag4Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag4Boton1ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(historiaFrame3);
-        FrameUtil.configureFrame(historiaFrame3, historiaFrame4); 
+        configFrame.especificacionesFrame(historiaFrame3, historiaFrame4); 
     }//GEN-LAST:event_pag4Boton1ActionPerformed
 
     private void atrasBoton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton7ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, teoriaFrame);
+        configFrame.especificacionesFrame(iniciarFrame, teoriaFrame);
     }//GEN-LAST:event_atrasBoton7ActionPerformed
 
     private void atrasBoton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton8ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(teoriaFrame);
-        FrameUtil.configureFrame(teoriaFrame, reglasFrame);  
+        configFrame.especificacionesFrame(teoriaFrame, reglasFrame);  
     }//GEN-LAST:event_atrasBoton8ActionPerformed
 
     private void sumaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(sumaFrame);
-        FrameUtil.configureFrame(sumaFrame, reglasFrame);
+        configFrame.especificacionesFrame(sumaFrame, reglasFrame);
     }//GEN-LAST:event_sumaBotonActionPerformed
 
     private void multiplicacionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(multiplicacionFrame);
-        FrameUtil.configureFrame(multiplicacionFrame, reglasFrame);
+        configFrame.especificacionesFrame(multiplicacionFrame, reglasFrame);
     }//GEN-LAST:event_multiplicacionBotonActionPerformed
 
     private void laplaceBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laplaceBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(laplaceFrame);
-        FrameUtil.configureFrame(laplaceFrame, reglasFrame);
+        configFrame.especificacionesFrame(laplaceFrame, reglasFrame);
     }//GEN-LAST:event_laplaceBotonActionPerformed
 
     private void atrasBoton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton9ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(reglasFrame);
-        FrameUtil.configureFrame(reglasFrame, sumaFrame); 
+        configFrame.especificacionesFrame(reglasFrame, sumaFrame); 
     }//GEN-LAST:event_atrasBoton9ActionPerformed
 
     private void ejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejemplosumaFrame);
-        FrameUtil.configureFrame(ejemplosumaFrame, sumaFrame);
+        configFrame.especificacionesFrame(ejemplosumaFrame, sumaFrame);
     }//GEN-LAST:event_ejemploBotonActionPerformed
 
     private void atrasBoton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton10ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(sumaFrame);
-        FrameUtil.configureFrame(sumaFrame, ejemplosumaFrame);
+        configFrame.especificacionesFrame(sumaFrame, ejemplosumaFrame);
     }//GEN-LAST:event_atrasBoton10ActionPerformed
 
     private void reglasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reglasBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(reglasFrame);
-        FrameUtil.configureFrame(reglasFrame, teoriaFrame); 
+        configFrame.especificacionesFrame(reglasFrame, teoriaFrame); 
     }//GEN-LAST:event_reglasBotonActionPerformed
 
     private void conceptosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conceptosBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(conceptosFrame);
-        FrameUtil.configureFrame(conceptosFrame, teoriaFrame);
+        configFrame.especificacionesFrame(conceptosFrame, teoriaFrame);
     }//GEN-LAST:event_conceptosBotonActionPerformed
 
     private void distribucionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribucionBotonActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(distribucionFrame);
-        FrameUtil.configureFrame(distribucionFrame, teoriaFrame);
+        configFrame.especificacionesFrame(distribucionFrame, teoriaFrame);
     }//GEN-LAST:event_distribucionBotonActionPerformed
 
     private void atrasBoton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton11ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(reglasFrame);
-        FrameUtil.configureFrame(reglasFrame, multiplicacionFrame); 
+        configFrame.especificacionesFrame(reglasFrame, multiplicacionFrame); 
     }//GEN-LAST:event_atrasBoton11ActionPerformed
 
     private void atrasBoton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton12ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(multiplicacionFrame);
-        FrameUtil.configureFrame(multiplicacionFrame, ejemplomultiplicacionFrame); 
+        configFrame.especificacionesFrame(multiplicacionFrame, ejemplomultiplicacionFrame); 
     }//GEN-LAST:event_atrasBoton12ActionPerformed
 
     private void ejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton1ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejemplomultiplicacionFrame);
-        FrameUtil.configureFrame(ejemplomultiplicacionFrame, multiplicacionFrame);
+        configFrame.especificacionesFrame(ejemplomultiplicacionFrame, multiplicacionFrame);
     }//GEN-LAST:event_ejemploBoton1ActionPerformed
 
     private void atrasBoton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton13ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(reglasFrame);
-        FrameUtil.configureFrame(reglasFrame, laplaceFrame); 
+        configFrame.especificacionesFrame(reglasFrame, laplaceFrame); 
     }//GEN-LAST:event_atrasBoton13ActionPerformed
 
     private void ejemploBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton2ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejemplolaplaceFrame);
-        FrameUtil.configureFrame(ejemplolaplaceFrame, laplaceFrame);
+        configFrame.especificacionesFrame(ejemplolaplaceFrame, laplaceFrame);
     }//GEN-LAST:event_ejemploBoton2ActionPerformed
 
     private void atrasBoton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton14ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(laplaceFrame);
-        FrameUtil.configureFrame(laplaceFrame, ejemplolaplaceFrame);
+        configFrame.especificacionesFrame(laplaceFrame, ejemplolaplaceFrame);
     }//GEN-LAST:event_atrasBoton14ActionPerformed
 
     private void atrasBoton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton15ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(teoriaFrame);
-        FrameUtil.configureFrame(teoriaFrame, conceptosFrame);
+        configFrame.especificacionesFrame(teoriaFrame, conceptosFrame);
     }//GEN-LAST:event_atrasBoton15ActionPerformed
 
     private void atrasBoton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton16ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(teoriaFrame);
-        FrameUtil.configureFrame(teoriaFrame, conceptosFrame1); 
+        configFrame.especificacionesFrame(teoriaFrame, conceptosFrame1); 
     }//GEN-LAST:event_atrasBoton16ActionPerformed
 
     private void siguienteBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBoton3ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(conceptosFrame1);
-        FrameUtil.configureFrame(conceptosFrame1, conceptosFrame); 
+        configFrame.especificacionesFrame(conceptosFrame1, conceptosFrame); 
     }//GEN-LAST:event_siguienteBoton3ActionPerformed
 
     private void anteriorBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorBoton4ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(conceptosFrame);
-        FrameUtil.configureFrame(conceptosFrame, conceptosFrame1); 
+        configFrame.especificacionesFrame(conceptosFrame, conceptosFrame1); 
     }//GEN-LAST:event_anteriorBoton4ActionPerformed
 
     private void atrasBoton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton17ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(teoriaFrame);
-        FrameUtil.configureFrame(teoriaFrame, distribucionFrame);
+        configFrame.especificacionesFrame(teoriaFrame, distribucionFrame);
     }//GEN-LAST:event_atrasBoton17ActionPerformed
 
     private void ejemploBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton3ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejemplocontinuaFrame);
-        FrameUtil.configureFrame(ejemplocontinuaFrame, distribucionFrame); 
+        configFrame.especificacionesFrame(ejemplocontinuaFrame, distribucionFrame); 
     }//GEN-LAST:event_ejemploBoton3ActionPerformed
 
     private void ejemploBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton4ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(ejemplodiscretaFrame);
-        FrameUtil.configureFrame(ejemplodiscretaFrame, distribucionFrame);
+        configFrame.especificacionesFrame(ejemplodiscretaFrame, distribucionFrame);
     }//GEN-LAST:event_ejemploBoton4ActionPerformed
 
     private void atrasBoton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton18ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(distribucionFrame);
-        FrameUtil.configureFrame(distribucionFrame, ejemplocontinuaFrame); 
+        configFrame.especificacionesFrame(distribucionFrame, ejemplocontinuaFrame); 
     }//GEN-LAST:event_atrasBoton18ActionPerformed
 
     private void atrasBoton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton19ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(distribucionFrame);
-        FrameUtil.configureFrame(distribucionFrame, ejemplodiscretaFrame);
+        configFrame.especificacionesFrame(distribucionFrame, ejemplodiscretaFrame);
     }//GEN-LAST:event_atrasBoton19ActionPerformed
 
     private void atrasBoton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton20ActionPerformed
         // TODO add your handling code here:
-        IconUtil.setIcon(iniciarFrame);
-        FrameUtil.configureFrame(iniciarFrame, ejerciciosFrame); 
+        configFrame.especificacionesFrame(iniciarFrame, ejerciciosFrame); 
     }//GEN-LAST:event_atrasBoton20ActionPerformed
 
     /**
@@ -1051,22 +1013,16 @@ public class Probabilidades extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Probabilidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Probabilidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Probabilidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Probabilidades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Probabilidades().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Probabilidades().setVisible(true);
         });
     }
 
