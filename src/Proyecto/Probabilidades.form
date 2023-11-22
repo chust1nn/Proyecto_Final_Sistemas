@@ -3,6 +3,12 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JFrame" name="iniciarFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -96,9 +102,13 @@
     </Container>
     <Container class="javax.swing.JFrame" name="creditosFrame">
       <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1280, 720]"/>
         </Property>
+        <Property name="resizable" type="boolean" value="false"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -141,6 +151,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="historiaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -213,6 +229,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="historiaFrame1">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -300,6 +322,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="historiaFrame2">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -387,6 +415,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="historiaFrame3">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -474,6 +508,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="historiaFrame4">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -546,6 +586,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="teoriaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -632,6 +678,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="reglasFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -718,6 +770,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="sumaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -774,6 +832,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejemplosumaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -810,6 +874,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="multiplicacionFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -866,6 +936,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejemplomultiplicacionFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -902,6 +978,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="laplaceFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -958,6 +1040,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejemplolaplaceFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -994,6 +1082,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="conceptosFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1050,6 +1144,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="conceptosFrame1">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1106,6 +1206,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="distribucionFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1177,6 +1283,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejemplocontinuaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1206,6 +1318,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejemplodiscretaFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1235,6 +1353,12 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="ejerciciosFrame">
+      <Properties>
+        <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection component="Form" name="iconImage" type="property"/>
+        </Property>
+        <Property name="resizable" type="boolean" value="false"/>
+      </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
         <Property name="useNullLayout" type="boolean" value="false"/>
@@ -1266,6 +1390,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection component="Form" name="iconImage" type="property"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -1340,6 +1468,9 @@
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Proyecto/Elementos_Proyecto/PROBABILIDADES.jpg"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Constraints>

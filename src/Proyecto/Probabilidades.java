@@ -4,7 +4,9 @@
  */
 package Proyecto;
 
+import java.awt.Image;
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -17,9 +19,29 @@ public class Probabilidades extends javax.swing.JFrame {
      * Creates new form Probabilidades
      */
     public Probabilidades() {
+        
         initComponents();
         this.setSize(1280, 760);
         setLocationRelativeTo(null); 
+        IconUtil.setIcon(this);
+    }
+    
+    public class IconUtil {
+        private static final Image Icon_Image = new ImageIcon(IconUtil.class.getResource("/Proyecto/Elementos_Proyecto/dados.png")).getImage();
+    
+        public static void setIcon(JFrame frame) {
+            frame.setIconImage(Icon_Image);
+        }
+    }
+    
+    public class FrameUtil {
+        public static void configureFrame(JFrame frame1, JFrame frame2) {
+            IconUtil.setIcon(frame1);
+            frame1.setVisible(true);
+            frame1.setSize(1280, 760);
+            frame1.setLocationRelativeTo(null);
+            frame2.setVisible(false);
+        }
     }
 
     /**
@@ -125,6 +147,8 @@ public class Probabilidades extends javax.swing.JFrame {
         creditosBoton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        iniciarFrame.setIconImage(getIconImage());
+        iniciarFrame.setResizable(false);
         iniciarFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -166,7 +190,9 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES background.png"))); // NOI18N
         iniciarFrame.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        creditosFrame.setIconImage(getIconImage());
         creditosFrame.setMinimumSize(new java.awt.Dimension(1280, 720));
+        creditosFrame.setResizable(false);
         creditosFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -182,6 +208,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CREDITOS into.png"))); // NOI18N
         creditosFrame.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        historiaFrame.setIconImage(getIconImage());
+        historiaFrame.setResizable(false);
         historiaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pag2Boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PAG 2.png"))); // NOI18N
@@ -210,6 +238,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/Historia 1.jpg"))); // NOI18N
         historiaFrame.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        historiaFrame1.setIconImage(getIconImage());
+        historiaFrame1.setResizable(false);
         historiaFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pag3Boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PAG 3.png"))); // NOI18N
@@ -246,6 +276,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 2.jpg"))); // NOI18N
         historiaFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        historiaFrame2.setIconImage(getIconImage());
+        historiaFrame2.setResizable(false);
         historiaFrame2.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS w.png"))); // NOI18N
@@ -282,6 +314,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 3.jpg"))); // NOI18N
         historiaFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        historiaFrame3.setIconImage(getIconImage());
+        historiaFrame3.setResizable(false);
         historiaFrame3.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -318,6 +352,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 4.jpg"))); // NOI18N
         historiaFrame3.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        historiaFrame4.setIconImage(getIconImage());
+        historiaFrame4.setResizable(false);
         historiaFrame4.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS w.png"))); // NOI18N
@@ -346,6 +382,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 5.jpg"))); // NOI18N
         historiaFrame4.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        teoriaFrame.setIconImage(getIconImage());
+        teoriaFrame.setResizable(false);
         teoriaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reglasBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/REGLAS boton.png"))); // NOI18N
@@ -385,6 +423,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TEORIA back.jpg"))); // NOI18N
         teoriaFrame.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        reglasFrame.setIconImage(getIconImage());
+        reglasFrame.setResizable(false);
         reglasFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -424,6 +464,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/REGLAS.jpg"))); // NOI18N
         reglasFrame.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        sumaFrame.setIconImage(getIconImage());
+        sumaFrame.setResizable(false);
         sumaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -447,6 +489,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/SUMA.jpg"))); // NOI18N
         sumaFrame.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        ejemplosumaFrame.setIconImage(getIconImage());
+        ejemplosumaFrame.setResizable(false);
         ejemplosumaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -460,6 +504,8 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplosumaFrame.getContentPane().add(atrasBoton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
         ejemplosumaFrame.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        multiplicacionFrame.setIconImage(getIconImage());
+        multiplicacionFrame.setResizable(false);
         multiplicacionFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -483,6 +529,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MULTIPLICACION.jpg"))); // NOI18N
         multiplicacionFrame.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        ejemplomultiplicacionFrame.setIconImage(getIconImage());
+        ejemplomultiplicacionFrame.setResizable(false);
         ejemplomultiplicacionFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -496,6 +544,8 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplomultiplicacionFrame.getContentPane().add(atrasBoton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
         ejemplomultiplicacionFrame.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        laplaceFrame.setIconImage(getIconImage());
+        laplaceFrame.setResizable(false);
         laplaceFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -519,6 +569,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/LAPLACE.jpg"))); // NOI18N
         laplaceFrame.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        ejemplolaplaceFrame.setIconImage(getIconImage());
+        ejemplolaplaceFrame.setResizable(false);
         ejemplolaplaceFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -532,6 +584,8 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplolaplaceFrame.getContentPane().add(atrasBoton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
         ejemplolaplaceFrame.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        conceptosFrame.setIconImage(getIconImage());
+        conceptosFrame.setResizable(false);
         conceptosFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -555,6 +609,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 1.jpg"))); // NOI18N
         conceptosFrame.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        conceptosFrame1.setIconImage(getIconImage());
+        conceptosFrame1.setResizable(false);
         conceptosFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -578,6 +634,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 2.jpg"))); // NOI18N
         conceptosFrame1.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        distribucionFrame.setIconImage(getIconImage());
+        distribucionFrame.setResizable(false);
         distribucionFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -609,6 +667,8 @@ public class Probabilidades extends javax.swing.JFrame {
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VARIABLES.jpg"))); // NOI18N
         distribucionFrame.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
+        ejemplocontinuaFrame.setIconImage(getIconImage());
+        ejemplocontinuaFrame.setResizable(false);
         ejemplocontinuaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -621,6 +681,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         ejemplocontinuaFrame.getContentPane().add(atrasBoton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
 
+        ejemplodiscretaFrame.setIconImage(getIconImage());
+        ejemplodiscretaFrame.setResizable(false);
         ejemplodiscretaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -633,6 +695,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         ejemplodiscretaFrame.getContentPane().add(atrasBoton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
 
+        ejerciciosFrame.setIconImage(getIconImage());
+        ejerciciosFrame.setResizable(false);
         ejerciciosFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         atrasBoton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
@@ -646,6 +710,8 @@ public class Probabilidades extends javax.swing.JFrame {
         ejerciciosFrame.getContentPane().add(atrasBoton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iniciarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/INICIAR.png"))); // NOI18N
@@ -674,25 +740,24 @@ public class Probabilidades extends javax.swing.JFrame {
         getContentPane().add(creditosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 340, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES.jpg"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
     private void iniciarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBotonActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        this.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, this);
     }//GEN-LAST:event_iniciarBotonActionPerformed
 
     private void creditosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditosBotonActionPerformed
         // TODO add your handling code here:
-        creditosFrame.setVisible(true);
-        creditosFrame.setSize(1280, 760);
-        creditosFrame.setLocationRelativeTo(null);
-        this.setVisible(false);
+        IconUtil.setIcon(creditosFrame);
+        FrameUtil.configureFrame(creditosFrame, this);
     }//GEN-LAST:event_creditosBotonActionPerformed
 
     private void salirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBotonActionPerformed
@@ -702,360 +767,272 @@ public class Probabilidades extends javax.swing.JFrame {
 
     private void atrasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBotonActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(false);
-        this.setVisible(true);        
+        IconUtil.setIcon(this);
+        FrameUtil.configureFrame(this, iniciarFrame);        
     }//GEN-LAST:event_atrasBotonActionPerformed
 
     private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
-        // TODO add your handling code here: 
-        historiaFrame.setVisible(true);
-        historiaFrame.setSize(1280, 760);
-        historiaFrame.setLocationRelativeTo(null);
-        iniciarFrame.setVisible(false);
+        // TODO add your handling code here:
+        IconUtil.setIcon(historiaFrame);
+        FrameUtil.configureFrame(historiaFrame, iniciarFrame);      
     }//GEN-LAST:event_historiaBotonActionPerformed
 
     private void teoriaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teoriaBotonActionPerformed
         // TODO add your handling code here:
-        teoriaFrame.setVisible(true);
-        teoriaFrame.setSize(1280, 760);
-        teoriaFrame.setLocationRelativeTo(null);
-        iniciarFrame.setVisible(false);
+        IconUtil.setIcon(teoriaFrame);
+        FrameUtil.configureFrame(teoriaFrame, iniciarFrame);   
     }//GEN-LAST:event_teoriaBotonActionPerformed
 
     private void ejerciciosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejerciciosBotonActionPerformed
         // TODO add your handling code here:
-        ejerciciosFrame.setVisible(true);
-        ejerciciosFrame.setSize(1280, 760);
-        ejerciciosFrame.setLocationRelativeTo(null);
-        iniciarFrame.setVisible(false);
+        IconUtil.setIcon(ejerciciosFrame);
+        FrameUtil.configureFrame(ejerciciosFrame, iniciarFrame);    
     }//GEN-LAST:event_ejerciciosBotonActionPerformed
 
     private void atrasBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton1ActionPerformed
         // TODO add your handling code here:
-        creditosFrame.setVisible(false);
-        this.setVisible(true);
+        IconUtil.setIcon(this);
+        FrameUtil.configureFrame(this, creditosFrame);  
     }//GEN-LAST:event_atrasBoton1ActionPerformed
 
     private void atrasBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton2ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        historiaFrame.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, historiaFrame);  
     }//GEN-LAST:event_atrasBoton2ActionPerformed
 
     private void pag2BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag2BotonActionPerformed
         // TODO add your handling code here: 
-        historiaFrame1.setVisible(true);
-        historiaFrame1.setSize(1280, 760);
-        historiaFrame1.setLocationRelativeTo(null);
-        historiaFrame.setVisible(false);
+        IconUtil.setIcon(historiaFrame);
+        FrameUtil.configureFrame(historiaFrame1, historiaFrame);  
     }//GEN-LAST:event_pag2BotonActionPerformed
 
     private void pag3BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag3BotonActionPerformed
         // TODO add your handling code here:
-        historiaFrame2.setVisible(true);
-        historiaFrame2.setSize(1280, 760);
-        historiaFrame2.setLocationRelativeTo(null);
-        historiaFrame1.setVisible(false);
-        
+        IconUtil.setIcon(historiaFrame2);
+        FrameUtil.configureFrame(historiaFrame2, historiaFrame1);    
     }//GEN-LAST:event_pag3BotonActionPerformed
 
     private void pag1BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag1BotonActionPerformed
         // TODO add your handling code here:
-        historiaFrame.setVisible(true);
-        historiaFrame.setSize(1280, 760);
-        historiaFrame.setLocationRelativeTo(null);
-        historiaFrame1.setVisible(false);
+        IconUtil.setIcon(historiaFrame);
+        FrameUtil.configureFrame(historiaFrame, historiaFrame1);
     }//GEN-LAST:event_pag1BotonActionPerformed
 
     private void atrasBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton3ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        historiaFrame1.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, historiaFrame1);
     }//GEN-LAST:event_atrasBoton3ActionPerformed
 
     private void atrasBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton4ActionPerformed
-            // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        historiaFrame2.setVisible(false);
+        // TODO add your handling code here:
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, historiaFrame2);
     }//GEN-LAST:event_atrasBoton4ActionPerformed
 
     private void pag4BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag4BotonActionPerformed
         // TODO add your handling code here:
-        historiaFrame3.setVisible(true);
-        historiaFrame3.setSize(1280, 760);
-        historiaFrame3.setLocationRelativeTo(null);
-        historiaFrame2.setVisible(false);
+        IconUtil.setIcon(historiaFrame3);
+        FrameUtil.configureFrame(historiaFrame3, historiaFrame2); 
     }//GEN-LAST:event_pag4BotonActionPerformed
 
     private void pag2Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag2Boton1ActionPerformed
         // TODO add your handling code here:
-        historiaFrame1.setVisible(true);
-        historiaFrame1.setSize(1280, 760);
-        historiaFrame1.setLocationRelativeTo(null);
-        historiaFrame2.setVisible(false);
-        
+        IconUtil.setIcon(historiaFrame1);
+        FrameUtil.configureFrame(historiaFrame1, historiaFrame2);  
     }//GEN-LAST:event_pag2Boton1ActionPerformed
 
     private void atrasBoton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton5ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        historiaFrame3.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, historiaFrame3); 
     }//GEN-LAST:event_atrasBoton5ActionPerformed
 
     private void pag3Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag3Boton1ActionPerformed
         // TODO add your handling code here:
-        historiaFrame2.setVisible(true);
-        historiaFrame2.setSize(1280, 760);
-        historiaFrame2.setLocationRelativeTo(null);
-        historiaFrame3.setVisible(false);
+        IconUtil.setIcon(historiaFrame2);
+        FrameUtil.configureFrame(historiaFrame2, historiaFrame3);
     }//GEN-LAST:event_pag3Boton1ActionPerformed
 
     private void pag5BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag5BotonActionPerformed
         // TODO add your handling code here:
-        historiaFrame4.setVisible(true);
-        historiaFrame4.setSize(1280, 760);
-        historiaFrame4.setLocationRelativeTo(null);
-        historiaFrame3.setVisible(false);
+        IconUtil.setIcon(historiaFrame4);
+        FrameUtil.configureFrame(historiaFrame4, historiaFrame3); 
     }//GEN-LAST:event_pag5BotonActionPerformed
 
     private void atrasBoton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton6ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        historiaFrame4.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, historiaFrame4);
     }//GEN-LAST:event_atrasBoton6ActionPerformed
 
     private void pag4Boton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pag4Boton1ActionPerformed
         // TODO add your handling code here:
-        historiaFrame3.setVisible(true);
-        historiaFrame3.setSize(1280, 760);
-        historiaFrame3.setLocationRelativeTo(null);
-        historiaFrame4.setVisible(false);
+        IconUtil.setIcon(historiaFrame3);
+        FrameUtil.configureFrame(historiaFrame3, historiaFrame4); 
     }//GEN-LAST:event_pag4Boton1ActionPerformed
 
     private void atrasBoton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton7ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        teoriaFrame.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, teoriaFrame);
     }//GEN-LAST:event_atrasBoton7ActionPerformed
 
     private void atrasBoton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton8ActionPerformed
         // TODO add your handling code here:
-        teoriaFrame.setVisible(true);
-        teoriaFrame.setSize(1280, 760);
-        teoriaFrame.setLocationRelativeTo(null);
-        reglasFrame.setVisible(false);
+        IconUtil.setIcon(teoriaFrame);
+        FrameUtil.configureFrame(teoriaFrame, reglasFrame);  
     }//GEN-LAST:event_atrasBoton8ActionPerformed
 
     private void sumaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sumaBotonActionPerformed
         // TODO add your handling code here:
-        sumaFrame.setVisible(true);
-        sumaFrame.setSize(1280, 760);
-        sumaFrame.setLocationRelativeTo(null);
-        reglasFrame.setVisible(false);
+        IconUtil.setIcon(sumaFrame);
+        FrameUtil.configureFrame(sumaFrame, reglasFrame);
     }//GEN-LAST:event_sumaBotonActionPerformed
 
     private void multiplicacionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplicacionBotonActionPerformed
         // TODO add your handling code here:
-        multiplicacionFrame.setVisible(true);
-        multiplicacionFrame.setSize(1280, 760);
-        multiplicacionFrame.setLocationRelativeTo(null);
-        reglasFrame.setVisible(false);
+        IconUtil.setIcon(multiplicacionFrame);
+        FrameUtil.configureFrame(multiplicacionFrame, reglasFrame);
     }//GEN-LAST:event_multiplicacionBotonActionPerformed
 
     private void laplaceBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laplaceBotonActionPerformed
         // TODO add your handling code here:
-        laplaceFrame.setVisible(true);
-        laplaceFrame.setSize(1280, 760);
-        laplaceFrame.setLocationRelativeTo(null);
-        reglasFrame.setVisible(false);
+        IconUtil.setIcon(laplaceFrame);
+        FrameUtil.configureFrame(laplaceFrame, reglasFrame);
     }//GEN-LAST:event_laplaceBotonActionPerformed
 
     private void atrasBoton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton9ActionPerformed
         // TODO add your handling code here:
-        reglasFrame.setVisible(true);
-        reglasFrame.setSize(1280, 760);
-        reglasFrame.setLocationRelativeTo(null);
-        sumaFrame.setVisible(false);
+        IconUtil.setIcon(reglasFrame);
+        FrameUtil.configureFrame(reglasFrame, sumaFrame); 
     }//GEN-LAST:event_atrasBoton9ActionPerformed
 
     private void ejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBotonActionPerformed
         // TODO add your handling code here:
-        ejemplosumaFrame.setVisible(true);
-        ejemplosumaFrame.setSize(1280, 760);
-        ejemplosumaFrame.setLocationRelativeTo(null);
-        sumaFrame.setVisible(false);
+        IconUtil.setIcon(ejemplosumaFrame);
+        FrameUtil.configureFrame(ejemplosumaFrame, sumaFrame);
     }//GEN-LAST:event_ejemploBotonActionPerformed
 
     private void atrasBoton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton10ActionPerformed
         // TODO add your handling code here:
-        sumaFrame.setVisible(true);
-        sumaFrame.setSize(1280, 760);
-        sumaFrame.setLocationRelativeTo(null);
-        ejemplosumaFrame.setVisible(false);
+        IconUtil.setIcon(sumaFrame);
+        FrameUtil.configureFrame(sumaFrame, ejemplosumaFrame);
     }//GEN-LAST:event_atrasBoton10ActionPerformed
 
     private void reglasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reglasBotonActionPerformed
         // TODO add your handling code here:
-        reglasFrame.setVisible(true);
-        reglasFrame.setSize(1280, 760);
-        reglasFrame.setLocationRelativeTo(null);
-        teoriaFrame.setVisible(false);
+        IconUtil.setIcon(reglasFrame);
+        FrameUtil.configureFrame(reglasFrame, teoriaFrame); 
     }//GEN-LAST:event_reglasBotonActionPerformed
 
     private void conceptosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conceptosBotonActionPerformed
         // TODO add your handling code here:
-        conceptosFrame.setVisible(true);
-        conceptosFrame.setSize(1280, 760);
-        conceptosFrame.setLocationRelativeTo(null);
-        teoriaFrame.setVisible(false);
+        IconUtil.setIcon(conceptosFrame);
+        FrameUtil.configureFrame(conceptosFrame, teoriaFrame);
     }//GEN-LAST:event_conceptosBotonActionPerformed
 
     private void distribucionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribucionBotonActionPerformed
         // TODO add your handling code here:
-        distribucionFrame.setVisible(true);
-        distribucionFrame.setSize(1280, 760);
-        distribucionFrame.setLocationRelativeTo(null);
-        teoriaFrame.setVisible(false);
+        IconUtil.setIcon(distribucionFrame);
+        FrameUtil.configureFrame(distribucionFrame, teoriaFrame);
     }//GEN-LAST:event_distribucionBotonActionPerformed
 
     private void atrasBoton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton11ActionPerformed
         // TODO add your handling code here:
-        reglasFrame.setVisible(true);
-        reglasFrame.setSize(1280, 760);
-        reglasFrame.setLocationRelativeTo(null);
-        multiplicacionFrame.setVisible(false);
+        IconUtil.setIcon(reglasFrame);
+        FrameUtil.configureFrame(reglasFrame, multiplicacionFrame); 
     }//GEN-LAST:event_atrasBoton11ActionPerformed
 
     private void atrasBoton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton12ActionPerformed
         // TODO add your handling code here:
-        multiplicacionFrame.setVisible(true);
-        multiplicacionFrame.setSize(1280, 760);
-        multiplicacionFrame.setLocationRelativeTo(null);
-        ejemplomultiplicacionFrame.setVisible(false);
+        IconUtil.setIcon(multiplicacionFrame);
+        FrameUtil.configureFrame(multiplicacionFrame, ejemplomultiplicacionFrame); 
     }//GEN-LAST:event_atrasBoton12ActionPerformed
 
     private void ejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton1ActionPerformed
         // TODO add your handling code here:
-        ejemplomultiplicacionFrame.setVisible(true);
-        ejemplomultiplicacionFrame.setSize(1280, 760);
-        ejemplomultiplicacionFrame.setLocationRelativeTo(null);
-        multiplicacionFrame.setVisible(false);
+        IconUtil.setIcon(ejemplomultiplicacionFrame);
+        FrameUtil.configureFrame(ejemplomultiplicacionFrame, multiplicacionFrame);
     }//GEN-LAST:event_ejemploBoton1ActionPerformed
 
     private void atrasBoton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton13ActionPerformed
         // TODO add your handling code here:
-        reglasFrame.setVisible(true);
-        reglasFrame.setSize(1280, 760);
-        reglasFrame.setLocationRelativeTo(null);
-        laplaceFrame.setVisible(false);
+        IconUtil.setIcon(reglasFrame);
+        FrameUtil.configureFrame(reglasFrame, laplaceFrame); 
     }//GEN-LAST:event_atrasBoton13ActionPerformed
 
     private void ejemploBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton2ActionPerformed
         // TODO add your handling code here:
-        ejemplolaplaceFrame.setVisible(true);
-        ejemplolaplaceFrame.setSize(1280, 760);
-        ejemplolaplaceFrame.setLocationRelativeTo(null);
-        laplaceFrame.setVisible(false);
+        IconUtil.setIcon(ejemplolaplaceFrame);
+        FrameUtil.configureFrame(ejemplolaplaceFrame, laplaceFrame);
     }//GEN-LAST:event_ejemploBoton2ActionPerformed
 
     private void atrasBoton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton14ActionPerformed
         // TODO add your handling code here:
-        laplaceFrame.setVisible(true);
-        laplaceFrame.setSize(1280, 760);
-        laplaceFrame.setLocationRelativeTo(null);
-        ejemplolaplaceFrame.setVisible(false);
+        IconUtil.setIcon(laplaceFrame);
+        FrameUtil.configureFrame(laplaceFrame, ejemplolaplaceFrame);
     }//GEN-LAST:event_atrasBoton14ActionPerformed
 
     private void atrasBoton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton15ActionPerformed
         // TODO add your handling code here:
-        teoriaFrame.setVisible(true);
-        teoriaFrame.setSize(1280, 760);
-        teoriaFrame.setLocationRelativeTo(null);
-        conceptosFrame.setVisible(false);
+        IconUtil.setIcon(teoriaFrame);
+        FrameUtil.configureFrame(teoriaFrame, conceptosFrame);
     }//GEN-LAST:event_atrasBoton15ActionPerformed
 
     private void atrasBoton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton16ActionPerformed
         // TODO add your handling code here:
-        teoriaFrame.setVisible(true);
-        teoriaFrame.setSize(1280, 760);
-        teoriaFrame.setLocationRelativeTo(null);
-        conceptosFrame1.setVisible(false);
+        IconUtil.setIcon(teoriaFrame);
+        FrameUtil.configureFrame(teoriaFrame, conceptosFrame1); 
     }//GEN-LAST:event_atrasBoton16ActionPerformed
 
     private void siguienteBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteBoton3ActionPerformed
         // TODO add your handling code here:
-        conceptosFrame1.setVisible(true);
-        conceptosFrame1.setSize(1280, 760);
-        conceptosFrame1.setLocationRelativeTo(null);
-        conceptosFrame.setVisible(false);
+        IconUtil.setIcon(conceptosFrame1);
+        FrameUtil.configureFrame(conceptosFrame1, conceptosFrame); 
     }//GEN-LAST:event_siguienteBoton3ActionPerformed
 
     private void anteriorBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorBoton4ActionPerformed
         // TODO add your handling code here:
-        conceptosFrame.setVisible(true);
-        conceptosFrame.setSize(1280, 760);
-        conceptosFrame.setLocationRelativeTo(null);
-        conceptosFrame1.setVisible(false);
+        IconUtil.setIcon(conceptosFrame);
+        FrameUtil.configureFrame(conceptosFrame, conceptosFrame1); 
     }//GEN-LAST:event_anteriorBoton4ActionPerformed
 
     private void atrasBoton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton17ActionPerformed
         // TODO add your handling code here:
-        teoriaFrame.setVisible(true);
-        teoriaFrame.setSize(1280, 760);
-        teoriaFrame.setLocationRelativeTo(null);
-        distribucionFrame.setVisible(false);
+        IconUtil.setIcon(teoriaFrame);
+        FrameUtil.configureFrame(teoriaFrame, distribucionFrame);
     }//GEN-LAST:event_atrasBoton17ActionPerformed
 
     private void ejemploBoton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton3ActionPerformed
         // TODO add your handling code here:
-        ejemplocontinuaFrame.setVisible(true);
-        ejemplocontinuaFrame.setSize(1280, 760);
-        ejemplocontinuaFrame.setLocationRelativeTo(null);
-        distribucionFrame.setVisible(false);
+        IconUtil.setIcon(ejemplocontinuaFrame);
+        FrameUtil.configureFrame(ejemplocontinuaFrame, distribucionFrame); 
     }//GEN-LAST:event_ejemploBoton3ActionPerformed
 
     private void ejemploBoton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton4ActionPerformed
         // TODO add your handling code here:
-        ejemplodiscretaFrame.setVisible(true);
-        ejemplodiscretaFrame.setSize(1280, 760);
-        ejemplodiscretaFrame.setLocationRelativeTo(null);
-        distribucionFrame.setVisible(false);
+        IconUtil.setIcon(ejemplodiscretaFrame);
+        FrameUtil.configureFrame(ejemplodiscretaFrame, distribucionFrame);
     }//GEN-LAST:event_ejemploBoton4ActionPerformed
 
     private void atrasBoton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton18ActionPerformed
         // TODO add your handling code here:
-        distribucionFrame.setVisible(true);
-        distribucionFrame.setSize(1280, 760);
-        distribucionFrame.setLocationRelativeTo(null);
-        ejemplocontinuaFrame.setVisible(false);
+        IconUtil.setIcon(distribucionFrame);
+        FrameUtil.configureFrame(distribucionFrame, ejemplocontinuaFrame); 
     }//GEN-LAST:event_atrasBoton18ActionPerformed
 
     private void atrasBoton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton19ActionPerformed
         // TODO add your handling code here:
-        distribucionFrame.setVisible(true);
-        distribucionFrame.setSize(1280, 760);
-        distribucionFrame.setLocationRelativeTo(null);
-        ejemplodiscretaFrame.setVisible(false);
+        IconUtil.setIcon(distribucionFrame);
+        FrameUtil.configureFrame(distribucionFrame, ejemplodiscretaFrame);
     }//GEN-LAST:event_atrasBoton19ActionPerformed
 
     private void atrasBoton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton20ActionPerformed
         // TODO add your handling code here:
-        iniciarFrame.setVisible(true);
-        iniciarFrame.setSize(1280, 760);
-        iniciarFrame.setLocationRelativeTo(null);
-        ejerciciosFrame.setVisible(false);
+        IconUtil.setIcon(iniciarFrame);
+        FrameUtil.configureFrame(iniciarFrame, ejerciciosFrame); 
     }//GEN-LAST:event_atrasBoton20ActionPerformed
 
     /**
