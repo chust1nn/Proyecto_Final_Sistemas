@@ -13,25 +13,34 @@ public class Probabilidades extends javax.swing.JFrame {
 
     public Probabilidades() {
         initComponents();
+        //Deja la resolucion de la ventana principal en 1280x720
         this.setSize(1280, 760);
+        //Deja la ventana en el centro
         setLocationRelativeTo(null); 
+        //Deja en logo del programa en la ventana principal
         logoProbabilidades.setIcon(this);
     } 
-
-    public class logoProbabilidades {
-        private static final Image Icon_Image = new ImageIcon(logoProbabilidades.class.getResource("/Proyecto/Elementos_Proyecto/dados.png")).getImage();
     
+    //Funcion para colocar logo del programa a las ventanas
+    public class logoProbabilidades {
+        //Llama la imagen del logo que se encuentra en el proyecto y lo guarda en una variable
+        private static final Image Icon_Image = new ImageIcon(logoProbabilidades.class.getResource("/Proyecto/Elementos_Proyecto/dados.png")).getImage();
+        
+        //Coloca la imagen del logo desde la variable
         public static void setIcon(JFrame frame) {
             frame.setIconImage(Icon_Image);
         }
     }
     
+    //Configura las ventanas y su manejo
     public class configFrame {
         public static void especificacionesFrame(JFrame frame1, JFrame frame2) {
             logoProbabilidades.setIcon(frame1);
+            //Deja la ventana visible
             frame1.setVisible(true);
             frame1.setSize(1280, 760);
             frame1.setLocationRelativeTo(null);
+            //Deja de mostrar la ventana que estaba visible
             frame2.setVisible(false);
         }
     } 
