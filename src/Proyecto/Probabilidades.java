@@ -1,9 +1,12 @@
 package Proyecto;
 
 import java.awt.Image;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+
 
 /**
  *
@@ -62,6 +65,116 @@ public class Probabilidades extends javax.swing.JFrame {
         // Si la opción es NO_OPTION o el usuario cierra el diálogo, no hace nada
     }
     
+    private String carta1, carta2;
+
+    private void generarCartas(JLabel label, JLabel label1, JLabel label2, JLabel label3) {
+        // Genera nuevas cartas
+        Random random = new Random();
+        carta1 = obtenerCartaAleatoria(random);
+        carta2 = obtenerCartaAleatoria(random);
+
+        // Actualiza las etiquetas con las nuevas cartas
+        label.setText(carta1);
+        label1.setText(carta2);
+        label2.setText("");  // Limpiar el resultado de respuesta
+        campoResultado.setText("");  // Limpiar el campo de resultado
+        label3.setText("");  // Limpiar la respuesta correcta
+    }
+    
+    private void verificarRespuesta(JLabel label) {
+        
+        try {
+            // Obtiene la respuesta del usuario
+            double respuestaUsuario = Double.parseDouble(campoResultado.getText());
+
+            // Calcula el resultado correcto
+            double resultadoCorrecto = calcularsumaprobabilidad();
+
+            // Comprueba si la respuesta del usuario es correcta o incorrecta
+            if (respuestaUsuario == resultadoCorrecto) {
+                label.setText("Respuesta Correcta");
+            } else {
+                label.setText("Respuesta Incorrecta");
+            }
+
+        } catch (NumberFormatException ex) {
+            label.setText("Entrada inválida. Por favor, ingresa solo números.");
+        }
+    }
+    
+    private void verificarRespuesta1(JLabel label) {
+        
+        try {
+            // Obtiene la respuesta del usuario
+            double respuestaUsuario = Double.parseDouble(campoResultado1.getText());
+
+            // Calcula el resultado correcto
+            double resultadoCorrecto = calcularmultiplicacionprobabilidad();
+
+            // Comprueba si la respuesta del usuario es correcta o incorrecta
+            if (respuestaUsuario == resultadoCorrecto) {
+                label.setText("Respuesta Correcta");
+            } else {
+                label.setText("Respuesta Incorrecta");
+            }
+
+        } catch (NumberFormatException ex) {
+            label.setText("Entrada inválida. Por favor, ingresa solo números.");
+        }
+    }
+    
+    private void mostrarRespuestaCorrecta() {
+        // Muestra la respuesta correcta
+        double resultadoCorrecto = calcularsumaprobabilidad(); 
+        LabelRespuestaCorrecta.setText("Respuesta Correcta: " + resultadoCorrecto);
+    }
+    
+    private void mostrarRespuestaCorrecta1() {
+        // Muestra la respuesta correcta
+        double resultadoCorrecto = calcularmultiplicacionprobabilidad(); 
+        LabelRespuestaCorrecta1.setText("Respuesta Correcta: " + resultadoCorrecto);
+    }
+    
+    private double calcularmultiplicacionprobabilidad() {
+        int cartasTotales = 40;  // Un mazo español tiene 40 cartas
+
+        // Probabilidad de sacar cada carta
+        double probabilidadCarta1 = 1.0 / cartasTotales;
+        double probabilidadCarta2 = 1.0 / cartasTotales;
+
+        // Suma de las probabilidades de sacar carta1 o carta2
+        double resultadoCorrecto = probabilidadCarta1 * probabilidadCarta2;
+
+        return resultadoCorrecto;
+    }
+    
+    private double calcularsumaprobabilidad() {
+        int cartasTotales = 40;  // Un mazo español tiene 40 cartas
+
+        // Probabilidad de sacar cada carta
+        double probabilidadCarta1 = 1.0 / cartasTotales;
+        double probabilidadCarta2 = 1.0 / cartasTotales;
+
+        // Suma de las probabilidades de sacar carta1 o carta2
+        double resultadoCorrecto = probabilidadCarta1 + probabilidadCarta2;
+
+        return resultadoCorrecto;
+    }
+
+    private String obtenerCartaAleatoria(Random random) {
+        // Establece las listas de las cartas
+        String[] palos = {"Bastos", "Espadas", "Copas", "Oros"};
+        String[] figuras = {"Rey", "Sota", "Caballo", "1", "2", "3", "4", "5", "6", "7"};
+        
+        // Mide el largo de la lista y toma los valores de esta
+        String palo = palos[random.nextInt(palos.length)];
+        String figura = figuras[random.nextInt(figuras.length)];
+        
+        // Devuelve los valores que se tomaron de la lista
+        return figura + " de " + palo;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,84 +189,98 @@ public class Probabilidades extends javax.swing.JFrame {
         historiaBoton = new javax.swing.JButton();
         teoriaBoton = new javax.swing.JButton();
         ejerciciosBoton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        LabelIniciar = new javax.swing.JLabel();
         creditosFrame = new javax.swing.JFrame();
         atrasBoton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        LabelCreditos = new javax.swing.JLabel();
         historiaFrame = new javax.swing.JFrame();
         pag2Boton = new javax.swing.JButton();
         atrasBoton2 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        LabelPag1 = new javax.swing.JLabel();
+        LabelHistoria = new javax.swing.JLabel();
         historiaFrame1 = new javax.swing.JFrame();
         pag3Boton = new javax.swing.JButton();
         pag1Boton = new javax.swing.JButton();
         atrasBoton3 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        LabelPag2 = new javax.swing.JLabel();
+        LabelHistoria1 = new javax.swing.JLabel();
         historiaFrame2 = new javax.swing.JFrame();
         atrasBoton4 = new javax.swing.JButton();
         pag4Boton = new javax.swing.JButton();
         pag2Boton1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        LabelPag3 = new javax.swing.JLabel();
+        LabelHistoria2 = new javax.swing.JLabel();
         historiaFrame3 = new javax.swing.JFrame();
         atrasBoton5 = new javax.swing.JButton();
         pag3Boton1 = new javax.swing.JButton();
         pag5Boton = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        LabelPag4 = new javax.swing.JLabel();
+        LabelHistoria3 = new javax.swing.JLabel();
         historiaFrame4 = new javax.swing.JFrame();
         atrasBoton6 = new javax.swing.JButton();
         pag4Boton1 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        LabelPag5 = new javax.swing.JLabel();
+        LabelHistoria4 = new javax.swing.JLabel();
         teoriaFrame = new javax.swing.JFrame();
         reglasBoton = new javax.swing.JButton();
         conceptosBoton = new javax.swing.JButton();
         distribucionBoton = new javax.swing.JButton();
         atrasBoton7 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        LabelTeoria = new javax.swing.JLabel();
         reglasFrame = new javax.swing.JFrame();
         atrasBoton8 = new javax.swing.JButton();
         sumaBoton = new javax.swing.JButton();
         multiplicacionBoton = new javax.swing.JButton();
         laplaceBoton = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
+        LabelReglas = new javax.swing.JLabel();
         sumaFrame = new javax.swing.JFrame();
         atrasBoton9 = new javax.swing.JButton();
         ejemploBoton = new javax.swing.JButton();
-        jLabel16 = new javax.swing.JLabel();
+        LabelSuma = new javax.swing.JLabel();
         ejemplosumaFrame = new javax.swing.JFrame();
         atrasBoton10 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        respuestacorrectaBoton = new javax.swing.JButton();
+        nuevoejemploBoton = new javax.swing.JButton();
+        campoResultado = new javax.swing.JTextField();
+        LabelRespuestaCorrecta = new javax.swing.JLabel();
+        LabelResultadoRespuesta = new javax.swing.JLabel();
+        LabelCarta1 = new javax.swing.JLabel();
+        LabelCarta2 = new javax.swing.JLabel();
+        LabelEjemploSuma = new javax.swing.JLabel();
         multiplicacionFrame = new javax.swing.JFrame();
         atrasBoton11 = new javax.swing.JButton();
         ejemploBoton1 = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
+        LabelMultiplicacion = new javax.swing.JLabel();
         ejemplomultiplicacionFrame = new javax.swing.JFrame();
         atrasBoton12 = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
+        campoResultado1 = new javax.swing.JTextField();
+        LabelResultadoRespuesta1 = new javax.swing.JLabel();
+        LabelRespuestaCorrecta1 = new javax.swing.JLabel();
+        LabelCarta3 = new javax.swing.JLabel();
+        LabelCarta4 = new javax.swing.JLabel();
+        nuevoejemploBoton1 = new javax.swing.JButton();
+        respuestacorrectaBoton1 = new javax.swing.JButton();
+        LabelEjemploMultiplicacion = new javax.swing.JLabel();
         laplaceFrame = new javax.swing.JFrame();
         atrasBoton13 = new javax.swing.JButton();
         ejemploBoton2 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
+        LabelLaplace = new javax.swing.JLabel();
         ejemplolaplaceFrame = new javax.swing.JFrame();
         atrasBoton14 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
+        LabelEjemploLaplace = new javax.swing.JLabel();
         conceptosFrame = new javax.swing.JFrame();
         atrasBoton15 = new javax.swing.JButton();
         siguienteBoton3 = new javax.swing.JButton();
-        jLabel22 = new javax.swing.JLabel();
+        LabelConceptos = new javax.swing.JLabel();
         conceptosFrame1 = new javax.swing.JFrame();
         atrasBoton16 = new javax.swing.JButton();
         anteriorBoton4 = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
+        LabelConceptos1 = new javax.swing.JLabel();
         distribucionFrame = new javax.swing.JFrame();
         atrasBoton17 = new javax.swing.JButton();
         ejemploBoton3 = new javax.swing.JButton();
         ejemploBoton4 = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
+        LabelDistribucion = new javax.swing.JLabel();
         ejemplocontinuaFrame = new javax.swing.JFrame();
         atrasBoton18 = new javax.swing.JButton();
         ejemplodiscretaFrame = new javax.swing.JFrame();
@@ -163,7 +290,7 @@ public class Probabilidades extends javax.swing.JFrame {
         iniciarBoton = new javax.swing.JButton();
         salirBoton = new javax.swing.JButton();
         creditosBoton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LabelProbabilidades = new javax.swing.JLabel();
 
         iniciarFrame.setIconImage(getIconImage());
         iniciarFrame.setResizable(false);
@@ -205,8 +332,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         iniciarFrame.getContentPane().add(ejerciciosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 340, 120));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES background.png"))); // NOI18N
-        iniciarFrame.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES background.png"))); // NOI18N
+        iniciarFrame.getContentPane().add(LabelIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         creditosFrame.setIconImage(getIconImage());
         creditosFrame.setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -223,8 +350,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         creditosFrame.getContentPane().add(atrasBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CREDITOS into.png"))); // NOI18N
-        creditosFrame.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelCreditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CREDITOS into.png"))); // NOI18N
+        creditosFrame.getContentPane().add(LabelCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         historiaFrame.setIconImage(getIconImage());
         historiaFrame.setResizable(false);
@@ -248,13 +375,13 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         historiaFrame.getContentPane().add(atrasBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("1");
-        historiaFrame.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 630, 20, 30));
+        LabelPag1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelPag1.setForeground(new java.awt.Color(0, 0, 0));
+        LabelPag1.setText("1");
+        historiaFrame.getContentPane().add(LabelPag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 630, 20, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/Historia 1.jpg"))); // NOI18N
-        historiaFrame.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelHistoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/Historia 1.jpg"))); // NOI18N
+        historiaFrame.getContentPane().add(LabelHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         historiaFrame1.setIconImage(getIconImage());
         historiaFrame1.setResizable(false);
@@ -286,13 +413,13 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         historiaFrame1.getContentPane().add(atrasBoton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("2");
-        historiaFrame1.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 20, 30));
+        LabelPag2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelPag2.setForeground(new java.awt.Color(0, 0, 0));
+        LabelPag2.setText("2");
+        historiaFrame1.getContentPane().add(LabelPag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 20, 30));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 2.jpg"))); // NOI18N
-        historiaFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelHistoria1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 2.jpg"))); // NOI18N
+        historiaFrame1.getContentPane().add(LabelHistoria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         historiaFrame2.setIconImage(getIconImage());
         historiaFrame2.setResizable(false);
@@ -324,13 +451,13 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         historiaFrame2.getContentPane().add(pag2Boton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 610, 120, 60));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("3");
-        historiaFrame2.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 20, 30));
+        LabelPag3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelPag3.setForeground(new java.awt.Color(0, 0, 0));
+        LabelPag3.setText("3");
+        historiaFrame2.getContentPane().add(LabelPag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 20, 30));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 3.jpg"))); // NOI18N
-        historiaFrame2.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelHistoria2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 3.jpg"))); // NOI18N
+        historiaFrame2.getContentPane().add(LabelHistoria2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         historiaFrame3.setIconImage(getIconImage());
         historiaFrame3.setResizable(false);
@@ -362,13 +489,13 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         historiaFrame3.getContentPane().add(pag5Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 620, 120, 60));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("4");
-        historiaFrame3.getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 20, 30));
+        LabelPag4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelPag4.setForeground(new java.awt.Color(0, 0, 0));
+        LabelPag4.setText("4");
+        historiaFrame3.getContentPane().add(LabelPag4, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 630, 20, 30));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 4.jpg"))); // NOI18N
-        historiaFrame3.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelHistoria3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 4.jpg"))); // NOI18N
+        historiaFrame3.getContentPane().add(LabelHistoria3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         historiaFrame4.setIconImage(getIconImage());
         historiaFrame4.setResizable(false);
@@ -392,13 +519,13 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         historiaFrame4.getContentPane().add(pag4Boton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 120, 60));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("5");
-        historiaFrame4.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 20, 30));
+        LabelPag5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelPag5.setForeground(new java.awt.Color(0, 0, 0));
+        LabelPag5.setText("5");
+        historiaFrame4.getContentPane().add(LabelPag5, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 620, 20, 30));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 5.jpg"))); // NOI18N
-        historiaFrame4.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelHistoria4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/HISTORIA 5.jpg"))); // NOI18N
+        historiaFrame4.getContentPane().add(LabelHistoria4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         teoriaFrame.setIconImage(getIconImage());
         teoriaFrame.setResizable(false);
@@ -438,8 +565,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         teoriaFrame.getContentPane().add(atrasBoton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TEORIA back.jpg"))); // NOI18N
-        teoriaFrame.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelTeoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TEORIA back.jpg"))); // NOI18N
+        teoriaFrame.getContentPane().add(LabelTeoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         reglasFrame.setIconImage(getIconImage());
         reglasFrame.setResizable(false);
@@ -479,8 +606,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         reglasFrame.getContentPane().add(laplaceBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 340, 120));
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/REGLAS.jpg"))); // NOI18N
-        reglasFrame.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelReglas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/REGLAS.jpg"))); // NOI18N
+        reglasFrame.getContentPane().add(LabelReglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         sumaFrame.setIconImage(getIconImage());
         sumaFrame.setResizable(false);
@@ -504,8 +631,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         sumaFrame.getContentPane().add(ejemploBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 640, 120, 60));
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/SUMA.jpg"))); // NOI18N
-        sumaFrame.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelSuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/SUMA.jpg"))); // NOI18N
+        sumaFrame.getContentPane().add(LabelSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejemplosumaFrame.setIconImage(getIconImage());
         ejemplosumaFrame.setResizable(false);
@@ -520,7 +647,48 @@ public class Probabilidades extends javax.swing.JFrame {
             }
         });
         ejemplosumaFrame.getContentPane().add(atrasBoton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
-        ejemplosumaFrame.getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        respuestacorrectaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MOSTRAR RESPUESTA CORRECTA.png"))); // NOI18N
+        respuestacorrectaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                respuestacorrectaBotonActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(respuestacorrectaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 120, 60));
+
+        nuevoejemploBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/NUEVO_EJEMPLO.png"))); // NOI18N
+        nuevoejemploBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoejemploBotonActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(nuevoejemploBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
+
+        campoResultado.setText("Ingresa un número y haz click en Enter");
+        campoResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultadoActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(campoResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 230, 30));
+
+        LabelRespuestaCorrecta.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplosumaFrame.getContentPane().add(LabelRespuestaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 430, 180, 20));
+
+        LabelResultadoRespuesta.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplosumaFrame.getContentPane().add(LabelResultadoRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 590, 20));
+
+        LabelCarta1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ejemplosumaFrame.getContentPane().add(LabelCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 270, 40));
+
+        LabelCarta2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ejemplosumaFrame.getContentPane().add(LabelCarta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 300, 40));
+        LabelCarta2.setText(carta2);
+
+        LabelEjemploSuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO SUMA.jpg"))); // NOI18N
+        ejemplosumaFrame.getContentPane().add(LabelEjemploSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         multiplicacionFrame.setIconImage(getIconImage());
         multiplicacionFrame.setResizable(false);
@@ -544,8 +712,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         multiplicacionFrame.getContentPane().add(ejemploBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 620, 120, 60));
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MULTIPLICACION.jpg"))); // NOI18N
-        multiplicacionFrame.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelMultiplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MULTIPLICACION.jpg"))); // NOI18N
+        multiplicacionFrame.getContentPane().add(LabelMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejemplomultiplicacionFrame.setIconImage(getIconImage());
         ejemplomultiplicacionFrame.setResizable(false);
@@ -560,7 +728,47 @@ public class Probabilidades extends javax.swing.JFrame {
             }
         });
         ejemplomultiplicacionFrame.getContentPane().add(atrasBoton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
-        ejemplomultiplicacionFrame.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        campoResultado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultado1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(campoResultado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 230, 30));
+
+        LabelResultadoRespuesta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplomultiplicacionFrame.getContentPane().add(LabelResultadoRespuesta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 590, 20));
+
+        LabelRespuestaCorrecta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplomultiplicacionFrame.getContentPane().add(LabelRespuestaCorrecta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 230, 30));
+
+        LabelCarta3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 300, 40));
+        LabelCarta2.setText(carta2);
+
+        LabelCarta4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 270, 40));
+
+        nuevoejemploBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/NUEVO_EJEMPLO.png"))); // NOI18N
+        nuevoejemploBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevoejemploBoton1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(nuevoejemploBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
+
+        respuestacorrectaBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MOSTRAR RESPUESTA CORRECTA.png"))); // NOI18N
+        respuestacorrectaBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                respuestacorrectaBoton1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(respuestacorrectaBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 120, 60));
+
+        LabelEjemploMultiplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO MULTIPLICACION.jpg"))); // NOI18N
+        ejemplomultiplicacionFrame.getContentPane().add(LabelEjemploMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         laplaceFrame.setIconImage(getIconImage());
         laplaceFrame.setResizable(false);
@@ -584,8 +792,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         laplaceFrame.getContentPane().add(ejemploBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 590, 120, 60));
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/LAPLACE.jpg"))); // NOI18N
-        laplaceFrame.getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelLaplace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/LAPLACE.jpg"))); // NOI18N
+        laplaceFrame.getContentPane().add(LabelLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejemplolaplaceFrame.setIconImage(getIconImage());
         ejemplolaplaceFrame.setResizable(false);
@@ -600,7 +808,7 @@ public class Probabilidades extends javax.swing.JFrame {
             }
         });
         ejemplolaplaceFrame.getContentPane().add(atrasBoton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
-        ejemplolaplaceFrame.getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        ejemplolaplaceFrame.getContentPane().add(LabelEjemploLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         conceptosFrame.setIconImage(getIconImage());
         conceptosFrame.setResizable(false);
@@ -624,8 +832,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         conceptosFrame.getContentPane().add(siguienteBoton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, 120, 60));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 1.jpg"))); // NOI18N
-        conceptosFrame.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelConceptos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 1.jpg"))); // NOI18N
+        conceptosFrame.getContentPane().add(LabelConceptos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         conceptosFrame1.setIconImage(getIconImage());
         conceptosFrame1.setResizable(false);
@@ -649,8 +857,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         conceptosFrame1.getContentPane().add(anteriorBoton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 660, 120, 60));
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 2.jpg"))); // NOI18N
-        conceptosFrame1.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelConceptos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CONCEPTOS 2.jpg"))); // NOI18N
+        conceptosFrame1.getContentPane().add(LabelConceptos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         distribucionFrame.setIconImage(getIconImage());
         distribucionFrame.setResizable(false);
@@ -682,8 +890,8 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         distribucionFrame.getContentPane().add(ejemploBoton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 560, 120, 60));
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VARIABLES.jpg"))); // NOI18N
-        distribucionFrame.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelDistribucion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VARIABLES.jpg"))); // NOI18N
+        distribucionFrame.getContentPane().add(LabelDistribucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejemplocontinuaFrame.setIconImage(getIconImage());
         ejemplocontinuaFrame.setResizable(false);
@@ -757,14 +965,14 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         getContentPane().add(creditosBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 340, 120));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES.jpg"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        LabelProbabilidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PROBABILIDADES.jpg"))); // NOI18N
+        LabelProbabilidades.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(LabelProbabilidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+ 
     
     private void iniciarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarBotonActionPerformed
         // TODO add your handling code here:
@@ -904,6 +1112,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBotonActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplosumaFrame, sumaFrame);
+        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta);   
     }//GEN-LAST:event_ejemploBotonActionPerformed
 
     private void atrasBoton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton10ActionPerformed
@@ -939,6 +1148,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton1ActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplomultiplicacionFrame, multiplicacionFrame);
+        generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta, LabelRespuestaCorrecta);
     }//GEN-LAST:event_ejemploBoton1ActionPerformed
 
     private void atrasBoton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton13ActionPerformed
@@ -1006,6 +1216,37 @@ public class Probabilidades extends javax.swing.JFrame {
         configFrame.especificacionesFrame(iniciarFrame, ejerciciosFrame); 
     }//GEN-LAST:event_atrasBoton20ActionPerformed
 
+    private void campoResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoActionPerformed
+        // TODO add your handling code here:
+        // Configurar el campo de texto para verificar el resultado al presionar "Enter"    
+        verificarRespuesta(LabelResultadoRespuesta);
+    }//GEN-LAST:event_campoResultadoActionPerformed
+
+    private void respuestacorrectaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBotonActionPerformed
+        // TODO add your handling code here:
+        mostrarRespuestaCorrecta();
+    }//GEN-LAST:event_respuestacorrectaBotonActionPerformed
+
+    private void nuevoejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoejemploBotonActionPerformed
+        // TODO add your handling code here:
+        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta);    
+    }//GEN-LAST:event_nuevoejemploBotonActionPerformed
+
+    private void campoResultado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultado1ActionPerformed
+        // TODO add your handling code here:
+        verificarRespuesta1(LabelResultadoRespuesta1);
+    }//GEN-LAST:event_campoResultado1ActionPerformed
+
+    private void nuevoejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoejemploBoton1ActionPerformed
+        // TODO add your handling code here:
+         generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta, LabelRespuestaCorrecta);
+    }//GEN-LAST:event_nuevoejemploBoton1ActionPerformed
+
+    private void respuestacorrectaBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBoton1ActionPerformed
+        // TODO add your handling code here:
+        mostrarRespuestaCorrecta1();
+    }//GEN-LAST:event_respuestacorrectaBoton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1036,6 +1277,38 @@ public class Probabilidades extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel LabelCarta1;
+    public javax.swing.JLabel LabelCarta2;
+    public javax.swing.JLabel LabelCarta3;
+    public javax.swing.JLabel LabelCarta4;
+    private javax.swing.JLabel LabelConceptos;
+    private javax.swing.JLabel LabelConceptos1;
+    private javax.swing.JLabel LabelCreditos;
+    private javax.swing.JLabel LabelDistribucion;
+    private javax.swing.JLabel LabelEjemploLaplace;
+    private javax.swing.JLabel LabelEjemploMultiplicacion;
+    private javax.swing.JLabel LabelEjemploSuma;
+    private javax.swing.JLabel LabelHistoria;
+    private javax.swing.JLabel LabelHistoria1;
+    private javax.swing.JLabel LabelHistoria2;
+    private javax.swing.JLabel LabelHistoria3;
+    private javax.swing.JLabel LabelHistoria4;
+    private javax.swing.JLabel LabelIniciar;
+    private javax.swing.JLabel LabelLaplace;
+    private javax.swing.JLabel LabelMultiplicacion;
+    private javax.swing.JLabel LabelPag1;
+    private javax.swing.JLabel LabelPag2;
+    private javax.swing.JLabel LabelPag3;
+    private javax.swing.JLabel LabelPag4;
+    private javax.swing.JLabel LabelPag5;
+    private javax.swing.JLabel LabelProbabilidades;
+    private javax.swing.JLabel LabelReglas;
+    private javax.swing.JLabel LabelRespuestaCorrecta;
+    private javax.swing.JLabel LabelRespuestaCorrecta1;
+    private static javax.swing.JLabel LabelResultadoRespuesta;
+    private static javax.swing.JLabel LabelResultadoRespuesta1;
+    private javax.swing.JLabel LabelSuma;
+    private javax.swing.JLabel LabelTeoria;
     private javax.swing.JButton anteriorBoton4;
     private javax.swing.JButton atrasBoton;
     private javax.swing.JButton atrasBoton1;
@@ -1058,6 +1331,8 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton atrasBoton7;
     private javax.swing.JButton atrasBoton8;
     private javax.swing.JButton atrasBoton9;
+    public static javax.swing.JTextField campoResultado;
+    public static javax.swing.JTextField campoResultado1;
     private javax.swing.JButton conceptosBoton;
     private javax.swing.JFrame conceptosFrame;
     private javax.swing.JFrame conceptosFrame1;
@@ -1074,7 +1349,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JFrame ejemplodiscretaFrame;
     private javax.swing.JFrame ejemplolaplaceFrame;
     private javax.swing.JFrame ejemplomultiplicacionFrame;
-    private javax.swing.JFrame ejemplosumaFrame;
+    private static javax.swing.JFrame ejemplosumaFrame;
     private javax.swing.JButton ejerciciosBoton;
     private javax.swing.JFrame ejerciciosFrame;
     private javax.swing.JButton historiaBoton;
@@ -1085,34 +1360,12 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JFrame historiaFrame4;
     private javax.swing.JButton iniciarBoton;
     private javax.swing.JFrame iniciarFrame;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JButton laplaceBoton;
     private javax.swing.JFrame laplaceFrame;
     private javax.swing.JButton multiplicacionBoton;
     private javax.swing.JFrame multiplicacionFrame;
+    private javax.swing.JButton nuevoejemploBoton;
+    private javax.swing.JButton nuevoejemploBoton1;
     private javax.swing.JButton pag1Boton;
     private javax.swing.JButton pag2Boton;
     private javax.swing.JButton pag2Boton1;
@@ -1123,6 +1376,8 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton pag5Boton;
     private javax.swing.JButton reglasBoton;
     private javax.swing.JFrame reglasFrame;
+    private javax.swing.JButton respuestacorrectaBoton;
+    private javax.swing.JButton respuestacorrectaBoton1;
     private javax.swing.JButton salirBoton;
     private javax.swing.JButton siguienteBoton3;
     private javax.swing.JButton sumaBoton;
