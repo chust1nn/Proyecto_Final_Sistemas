@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 
@@ -59,10 +60,10 @@ public class Probabilidades extends javax.swing.JFrame {
                 "Confirmar cierre", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, emergencia, botones, botones[0]);
         //Para verificar la confirmacion de salir o no  
         if (opcion == JOptionPane.YES_OPTION) {
-            // Realizar acciones antes de cerrar la aplicación si es necesario
+            // Cierra el programa si la opcion es YES_OPTION (Si, no quiero)
             System.exit(0);
         }
-        // Si la opción es NO_OPTION o el usuario cierra el diálogo, no hace nada
+        // Si la opción es NO_OPTION (No, si quiero) o el usuario cierra el diálogo, no hace nada
     }
     
     private String carta1, carta2;
@@ -75,10 +76,14 @@ public class Probabilidades extends javax.swing.JFrame {
 
         // Actualiza las etiquetas con las nuevas cartas
         label.setText(carta1);
-        label1.setText(carta2);
-        label2.setText("");  // Limpiar el resultado de respuesta
-        campoResultado.setText("");  // Limpiar el campo de resultado
-        label3.setText("");  // Limpiar la respuesta correcta
+        
+        // Verifica si label1 no es null antes de intentar actualizarlo
+        if (label1 != null) {
+            label1.setText(carta2);
+        }
+        label2.setText("");  // Limpia el resultado de respuesta
+        campoResultado.setText("");  // Limpia el campo de resultado
+        label3.setText("");  
     }
     
     private void verificarRespuesta(JLabel label, double tolerancia) {
@@ -96,7 +101,8 @@ public class Probabilidades extends javax.swing.JFrame {
             } else {
                 label.setText("Respuesta Incorrecta");
             }
-
+            
+            // Si la entrada ingresada por el usuario no es valida, le pide que ingrese numeros
         } catch (NumberFormatException ex) {
             label.setText("Entrada inválida. Por favor, ingresa solo números.");
         }
@@ -105,13 +111,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private void verificarRespuesta1(JLabel label, double tolerancia) {
         
         try {
-            // Obtiene la respuesta del usuario
             double respuestaUsuario = Double.parseDouble(campoResultado1.getText());
 
-            // Calcula el resultado correcto
             double resultadoCorrecto = calcularmultiplicacionprobabilidad();
 
-            // Comprueba si la respuesta del usuario es correcta o incorrecta
             if (Math.abs(respuestaUsuario - resultadoCorrecto) <= tolerancia) {
                 label.setText("Respuesta Correcta");
             } else {
@@ -126,13 +129,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private void verificarRespuesta2(JLabel label, double tolerancia) {
         
         try {
-            // Obtiene la respuesta del usuario
             double respuestaUsuario = Double.parseDouble(campoResultado2.getText());
 
-            // Calcula el resultado correcto
             double resultadoCorrecto = calcularlaplaceprobabilidad();
 
-            // Comprueba si la respuesta del usuario es correcta o incorrecta
             if (Math.abs(respuestaUsuario - resultadoCorrecto) <= tolerancia) {
                 label.setText("Respuesta Correcta");
             } else {
@@ -145,25 +145,22 @@ public class Probabilidades extends javax.swing.JFrame {
     }
     
     private void mostrarRespuestaCorrecta() {
-        // Muestra la respuesta correcta
         double resultadoCorrecto = calcularsumaprobabilidad(); 
         LabelRespuestaCorrecta.setText("Respuesta Correcta: " + resultadoCorrecto);
     }
     
     private void mostrarRespuestaCorrecta1() {
-        // Muestra la respuesta correcta
         double resultadoCorrecto = calcularmultiplicacionprobabilidad(); 
         LabelRespuestaCorrecta1.setText("Respuesta Correcta: " + resultadoCorrecto);
     }
     
-    private void mostrarRespuestaCorrecta2() {
-        // Muestra la respuesta correcta
+    private void mostrarRespuestaCorrecta2() {  
         double resultadoCorrecto = calcularlaplaceprobabilidad(); 
         LabelRespuestaCorrecta2.setText("Respuesta Correcta: " + resultadoCorrecto);
     }
         
     private double calcularmultiplicacionprobabilidad() {
-        int cartasTotales = 48;  // Un mazo español tiene 40 cartas
+        int cartasTotales = 48;  // Un mazo español tiene 48 cartas
 
         // Probabilidad de sacar cada carta
         double probabilidadCarta1 = 1.0 / cartasTotales;
@@ -176,9 +173,8 @@ public class Probabilidades extends javax.swing.JFrame {
     }
     
     private double calcularsumaprobabilidad() {
-        int cartasTotales = 48;  // Un mazo español tiene 40 cartas
+        int cartasTotales = 48;
 
-        // Probabilidad de sacar cada carta
         double probabilidadCarta1 = 1.0 / cartasTotales;
         double probabilidadCarta2 = 1.0 / cartasTotales;
 
@@ -189,12 +185,9 @@ public class Probabilidades extends javax.swing.JFrame {
     }
     
     private double calcularlaplaceprobabilidad() {
-        int cartasTotales = 48;  // Un mazo español tiene 40 cartas
+        int cartasTotales = 48;  
 
-        // Probabilidad de sacar cada carta
-        double resultadoCorrecto = 1.0 / cartasTotales;
-
-        return resultadoCorrecto;
+        return 1.0 / cartasTotales;
     }
 
     private String obtenerCartaAleatoria(Random random) {
@@ -325,8 +318,23 @@ public class Probabilidades extends javax.swing.JFrame {
         LabelDistribucion = new javax.swing.JLabel();
         ejemplocontinuaFrame = new javax.swing.JFrame();
         atrasBoton18 = new javax.swing.JButton();
+        ejemploBoton5 = new javax.swing.JButton();
+        LabelEjemploContinua = new javax.swing.JLabel();
+        ejemplonormalFrame = new javax.swing.JFrame();
+        atrasBoton23 = new javax.swing.JButton();
+        tablaBoton = new javax.swing.JButton();
+        LabelEjemploContinua1 = new javax.swing.JLabel();
         ejemplodiscretaFrame = new javax.swing.JFrame();
         atrasBoton19 = new javax.swing.JButton();
+        permutacionesBoton = new javax.swing.JButton();
+        combinacionesBoton = new javax.swing.JButton();
+        LabelEjemploDiscreta = new javax.swing.JLabel();
+        permutacionesFrame = new javax.swing.JFrame();
+        atrasBoton21 = new javax.swing.JButton();
+        LabelPermutaciones = new javax.swing.JLabel();
+        combinacionesFrame = new javax.swing.JFrame();
+        atrasBoton22 = new javax.swing.JButton();
+        LabelCombinaciones = new javax.swing.JLabel();
         ejerciciosFrame = new javax.swing.JFrame();
         atrasBoton20 = new javax.swing.JButton();
         iniciarBoton = new javax.swing.JButton();
@@ -984,6 +992,40 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         ejemplocontinuaFrame.getContentPane().add(atrasBoton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
 
+        ejemploBoton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO.jpg"))); // NOI18N
+        ejemploBoton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejemploBoton5ActionPerformed(evt);
+            }
+        });
+        ejemplocontinuaFrame.getContentPane().add(ejemploBoton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 610, 120, 60));
+
+        LabelEjemploContinua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISTRIBUCION CONTINUA.jpg"))); // NOI18N
+        ejemplocontinuaFrame.getContentPane().add(LabelEjemploContinua, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        ejemplonormalFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton23.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton23.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBoton23ActionPerformed(evt);
+            }
+        });
+        ejemplonormalFrame.getContentPane().add(atrasBoton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
+
+        tablaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TABLA boton.png"))); // NOI18N
+        tablaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tablaBotonActionPerformed(evt);
+            }
+        });
+        ejemplonormalFrame.getContentPane().add(tablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, 120, 60));
+
+        LabelEjemploContinua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISTRIBUCION NORMAL.png"))); // NOI18N
+        ejemplonormalFrame.getContentPane().add(LabelEjemploContinua1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
         ejemplodiscretaFrame.setIconImage(getIconImage());
         ejemplodiscretaFrame.setResizable(false);
         ejemplodiscretaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -997,6 +1039,55 @@ public class Probabilidades extends javax.swing.JFrame {
             }
         });
         ejemplodiscretaFrame.getContentPane().add(atrasBoton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
+
+        permutacionesBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PERMUTACIONES boton.png"))); // NOI18N
+        permutacionesBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                permutacionesBotonActionPerformed(evt);
+            }
+        });
+        ejemplodiscretaFrame.getContentPane().add(permutacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 120, 60));
+
+        combinacionesBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/COMBINACIONES boton.png"))); // NOI18N
+        combinacionesBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combinacionesBotonActionPerformed(evt);
+            }
+        });
+        ejemplodiscretaFrame.getContentPane().add(combinacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 120, 60));
+
+        LabelEjemploDiscreta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISCRETA.jpg"))); // NOI18N
+        ejemplodiscretaFrame.getContentPane().add(LabelEjemploDiscreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        permutacionesFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton21.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton21.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBoton21ActionPerformed(evt);
+            }
+        });
+        permutacionesFrame.getContentPane().add(atrasBoton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
+
+        LabelPermutaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/PERMUTACIONES.jpg"))); // NOI18N
+        permutacionesFrame.getContentPane().add(LabelPermutaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        combinacionesFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton22.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton22.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBoton22ActionPerformed(evt);
+            }
+        });
+        combinacionesFrame.getContentPane().add(atrasBoton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
+
+        LabelCombinaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/COMBINACIONES.jpg"))); // NOI18N
+        combinacionesFrame.getContentPane().add(LabelCombinaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejerciciosFrame.setIconImage(getIconImage());
         ejerciciosFrame.setResizable(false);
@@ -1340,6 +1431,53 @@ public class Probabilidades extends javax.swing.JFrame {
         verificarRespuesta2(LabelResultadoRespuesta2, 0.0208);
     }//GEN-LAST:event_campoResultado2ActionPerformed
 
+    private void permutacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permutacionesBotonActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(permutacionesFrame, ejemplodiscretaFrame);
+    }//GEN-LAST:event_permutacionesBotonActionPerformed
+
+    private void combinacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combinacionesBotonActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(combinacionesFrame, ejemplodiscretaFrame);
+    }//GEN-LAST:event_combinacionesBotonActionPerformed
+
+    private void atrasBoton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton21ActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(ejemplodiscretaFrame, permutacionesFrame);
+    }//GEN-LAST:event_atrasBoton21ActionPerformed
+
+    private void atrasBoton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton22ActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(ejemplodiscretaFrame, combinacionesFrame);
+    }//GEN-LAST:event_atrasBoton22ActionPerformed
+
+    private void ejemploBoton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton5ActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(ejemplonormalFrame, ejemplocontinuaFrame);
+    }//GEN-LAST:event_ejemploBoton5ActionPerformed
+
+    private void atrasBoton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton23ActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(ejemplocontinuaFrame, ejemplonormalFrame);
+    }//GEN-LAST:event_atrasBoton23ActionPerformed
+
+    private void tablaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tablaBotonActionPerformed
+        // TODO add your handling code here:
+        // El texto que aparece en la opcion
+        String boton[] = {"OK"};
+        // Para un icono personalizado dentro de la ventana emergente
+        ImageIcon tabla = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/TABLA.png"));
+        // Crear un JDialog en lugar de usar JOptionPane
+        JDialog dialogo = new JDialog(ejemplonormalFrame, "TABLA DE DISTRIBUCIÓN NORMAL", true);
+        // Con esto es posible que la ventana emergente salga luego dar click
+        int opcion1 = JOptionPane.showOptionDialog(dialogo, null, "TABLA DE DISTRIBUCIÓN NORMAL", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, tabla, boton, boton[0]);
+        // Si la opción es OK o el usuario cierra el diálogo, no hace nada
+        if (opcion1 == 0) {
+            // Cierra la ventana
+            dialogo.dispose();
+        }
+    }//GEN-LAST:event_tablaBotonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1375,10 +1513,14 @@ public class Probabilidades extends javax.swing.JFrame {
     public javax.swing.JLabel LabelCarta3;
     public javax.swing.JLabel LabelCarta4;
     public javax.swing.JLabel LabelCarta5;
+    private javax.swing.JLabel LabelCombinaciones;
     private javax.swing.JLabel LabelConceptos;
     private javax.swing.JLabel LabelConceptos1;
     private javax.swing.JLabel LabelCreditos;
     private javax.swing.JLabel LabelDistribucion;
+    private javax.swing.JLabel LabelEjemploContinua;
+    private javax.swing.JLabel LabelEjemploContinua1;
+    private javax.swing.JLabel LabelEjemploDiscreta;
     private javax.swing.JLabel LabelEjemploLaplace;
     private javax.swing.JLabel LabelEjemploMultiplicacion;
     private javax.swing.JLabel LabelEjemploSuma;
@@ -1395,6 +1537,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JLabel LabelPag3;
     private javax.swing.JLabel LabelPag4;
     private javax.swing.JLabel LabelPag5;
+    private javax.swing.JLabel LabelPermutaciones;
     private javax.swing.JLabel LabelProbabilidades;
     private javax.swing.JLabel LabelReglas;
     private javax.swing.JLabel LabelRespuestaCorrecta;
@@ -1420,6 +1563,9 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton atrasBoton19;
     private javax.swing.JButton atrasBoton2;
     private javax.swing.JButton atrasBoton20;
+    private javax.swing.JButton atrasBoton21;
+    private javax.swing.JButton atrasBoton22;
+    private javax.swing.JButton atrasBoton23;
     private javax.swing.JButton atrasBoton3;
     private javax.swing.JButton atrasBoton4;
     private javax.swing.JButton atrasBoton5;
@@ -1430,6 +1576,8 @@ public class Probabilidades extends javax.swing.JFrame {
     public static javax.swing.JTextField campoResultado;
     public static javax.swing.JTextField campoResultado1;
     public static javax.swing.JTextField campoResultado2;
+    private javax.swing.JButton combinacionesBoton;
+    private javax.swing.JFrame combinacionesFrame;
     private javax.swing.JButton conceptosBoton;
     private javax.swing.JFrame conceptosFrame;
     private javax.swing.JFrame conceptosFrame1;
@@ -1442,10 +1590,12 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton ejemploBoton2;
     private javax.swing.JButton ejemploBoton3;
     private javax.swing.JButton ejemploBoton4;
+    private javax.swing.JButton ejemploBoton5;
     private javax.swing.JFrame ejemplocontinuaFrame;
     private javax.swing.JFrame ejemplodiscretaFrame;
     private javax.swing.JFrame ejemplolaplaceFrame;
     private javax.swing.JFrame ejemplomultiplicacionFrame;
+    private javax.swing.JFrame ejemplonormalFrame;
     private static javax.swing.JFrame ejemplosumaFrame;
     private javax.swing.JButton ejerciciosBoton;
     private javax.swing.JFrame ejerciciosFrame;
@@ -1472,6 +1622,8 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton pag4Boton;
     private javax.swing.JButton pag4Boton1;
     private javax.swing.JButton pag5Boton;
+    private javax.swing.JButton permutacionesBoton;
+    private javax.swing.JFrame permutacionesFrame;
     private javax.swing.JButton reglasBoton;
     private javax.swing.JFrame reglasFrame;
     private javax.swing.JButton respuestacorrectaBoton;
@@ -1481,6 +1633,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton siguienteBoton3;
     private javax.swing.JButton sumaBoton;
     private javax.swing.JFrame sumaFrame;
+    private javax.swing.JButton tablaBoton;
     private javax.swing.JButton teoriaBoton;
     private javax.swing.JFrame teoriaFrame;
     // End of variables declaration//GEN-END:variables
