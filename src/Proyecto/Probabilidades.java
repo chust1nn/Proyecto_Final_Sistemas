@@ -94,6 +94,7 @@ public class Probabilidades extends javax.swing.JFrame {
         label.setText(carta1);
         
         if (sonIguales(labeldialog, LabelCarta1SucesosDialog)) {
+            // Se contruyen los label explicativos con respcto a la suma
             labeldialog.setText("A = "+ carta1);
             labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
             labeldialog2.setIcon(laplaceprobabilidad());
@@ -118,6 +119,7 @@ public class Probabilidades extends javax.swing.JFrame {
         }
         
         if (sonIguales(labeldialog, LabelCarta1SucesosDialog1)) {
+            // Se contruyen los label explicativos con respcto a la multiplicacion
             labeldialog.setText("A = "+ carta1);
             labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
             labeldialog2.setIcon(laplaceprobabilidad());
@@ -136,12 +138,12 @@ public class Probabilidades extends javax.swing.JFrame {
             labeldialog7.setText("= ");
             labeldialog7.setIcon(multiplicacionprobabilidad());
             labeldialog7.setHorizontalTextPosition(JLabel.LEFT);
+            // Se guarda el label en un label de relleno para que no haya errores
             labeldialog8.setText("");
-            
         }
         
-        
         if (sonIguales(labeldialog, LabelCarta1SucesosDialog2)) {
+            // Se contruyen los label explicativos con respcto a laplace
             labeldialog.setText("A = "+ carta1);
             labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
             labeldialog2.setIcon(laplaceprobabilidad());
@@ -152,12 +154,6 @@ public class Probabilidades extends javax.swing.JFrame {
             labeldialog6.setText("");
             labeldialog7.setText("");
             labeldialog8.setText("");
-        }
-        
-        
-        // Verifica si label1 no es null antes de intentar actualizarlo
-        if (label1 != null) {
-            label1.setText(carta2);
         }
         
         label2.setText("");  // Limpia el resultado de respuesta
@@ -245,15 +241,12 @@ public class Probabilidades extends javax.swing.JFrame {
         return multiplicacion;
     }
     
-    
-    
     private void mostrarRespuestaCorrecta(JLabel LabelRespuesta, ImageIcon regla) {
         ImageIcon resultadoCorrecto = regla; 
         LabelRespuesta.setText("Respuesta Correcta: ");
         LabelRespuesta.setHorizontalTextPosition(JLabel.LEFT);
         LabelRespuesta.setIcon(resultadoCorrecto);
     }
-   
     
     private String obtenerCartaAleatoria(Random random) {
         // Establece las listas de las cartas
@@ -382,7 +375,6 @@ public class Probabilidades extends javax.swing.JFrame {
         LabelMultiplicacionLaplace1 = new javax.swing.JLabel();
         LabelMultiplicacionFinal = new javax.swing.JLabel();
         LabelExplicacionMultiplicacion = new javax.swing.JLabel();
-        relleno = new javax.swing.JLabel();
         laplaceFrame = new javax.swing.JFrame();
         atrasBoton13 = new javax.swing.JButton();
         ejemploBoton2 = new javax.swing.JButton();
@@ -404,13 +396,6 @@ public class Probabilidades extends javax.swing.JFrame {
         LabelCarta1SucesosDialog2 = new javax.swing.JLabel();
         LabelCarta1RespectivasDialog2 = new javax.swing.JLabel();
         LabelExplicacionLaplace = new javax.swing.JLabel();
-        relleno1 = new javax.swing.JLabel();
-        relleno2 = new javax.swing.JLabel();
-        relleno3 = new javax.swing.JLabel();
-        relleno4 = new javax.swing.JLabel();
-        relleno5 = new javax.swing.JLabel();
-        relleno6 = new javax.swing.JLabel();
-        relleno7 = new javax.swing.JLabel();
         conceptosFrame = new javax.swing.JFrame();
         atrasBoton15 = new javax.swing.JButton();
         siguienteBoton3 = new javax.swing.JButton();
@@ -449,6 +434,7 @@ public class Probabilidades extends javax.swing.JFrame {
         LabelCombinaciones = new javax.swing.JLabel();
         ejerciciosFrame = new javax.swing.JFrame();
         atrasBoton20 = new javax.swing.JButton();
+        relleno = new javax.swing.JLabel();
         iniciarBoton = new javax.swing.JButton();
         salirBoton = new javax.swing.JButton();
         creditosBoton = new javax.swing.JButton();
@@ -1013,7 +999,6 @@ public class Probabilidades extends javax.swing.JFrame {
 
         LabelExplicacionMultiplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION MULTIPLICACION.jpg"))); // NOI18N
         explicacionmultiplicacionDialog.getContentPane().add(LabelExplicacionMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 640));
-        explicacionmultiplicacionDialog.getContentPane().add(relleno, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
 
         laplaceFrame.setIconImage(getIconImage());
         laplaceFrame.setResizable(false);
@@ -1127,13 +1112,6 @@ public class Probabilidades extends javax.swing.JFrame {
 
         LabelExplicacionLaplace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION LAPLACE.jpg"))); // NOI18N
         explicacionlaplaceDialog.getContentPane().add(LabelExplicacionLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
-        explicacionlaplaceDialog.getContentPane().add(relleno7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
 
         conceptosFrame.setIconImage(getIconImage());
         conceptosFrame.setResizable(false);
@@ -1592,9 +1570,9 @@ public class Probabilidades extends javax.swing.JFrame {
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplolaplaceFrame, laplaceFrame);
         generarCartas(LabelCarta5, relleno8, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
-                LabelCarta1SucesosDialog2,relleno1, LabelCarta1RespectivasDialog2,
-                relleno2, relleno3, relleno4, relleno5,
-                relleno6, relleno7, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
+                LabelCarta1SucesosDialog2,relleno, LabelCarta1RespectivasDialog2,
+                relleno, relleno, relleno, relleno,
+                relleno, relleno, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
     }//GEN-LAST:event_ejemploBoton2ActionPerformed
 
     private void atrasBoton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton14ActionPerformed
@@ -1774,10 +1752,10 @@ public class Probabilidades extends javax.swing.JFrame {
 
     private void nuevascartasBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevascartasBoton2ActionPerformed
         // TODO add your handling code here:
-        generarCartas(LabelCarta5, relleno8, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
-                LabelCarta1SucesosDialog2,relleno1, LabelCarta1RespectivasDialog2,
-                relleno2, relleno3, relleno4, relleno5,
-                relleno6, relleno7, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
+        generarCartas(LabelCarta5, relleno, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
+                LabelCarta1SucesosDialog2,relleno, LabelCarta1RespectivasDialog2,
+                relleno, relleno, relleno, relleno,
+                relleno, relleno, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
     
     }//GEN-LAST:event_nuevascartasBoton2ActionPerformed
 
@@ -1985,13 +1963,6 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton reglasBoton;
     private javax.swing.JFrame reglasFrame;
     private javax.swing.JLabel relleno;
-    private javax.swing.JLabel relleno1;
-    private javax.swing.JLabel relleno2;
-    private javax.swing.JLabel relleno3;
-    private javax.swing.JLabel relleno4;
-    private javax.swing.JLabel relleno5;
-    private javax.swing.JLabel relleno6;
-    private javax.swing.JLabel relleno7;
     private javax.swing.JLabel relleno8;
     private javax.swing.JButton respuestacorrectaBoton;
     private javax.swing.JButton respuestacorrectaBoton1;
