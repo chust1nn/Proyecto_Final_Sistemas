@@ -4,9 +4,11 @@ import java.awt.Image;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 /**
@@ -33,6 +35,15 @@ public class Probabilidades extends javax.swing.JFrame {
         //Coloca la imagen del logo desde la variable
         public static void setIcon(JFrame frame) {
             frame.setIconImage(Icon_Image);
+        }
+    }
+    
+    public class configDialog {
+        public static void especificacionesDialog(JDialog dialog) {
+            //Deja la ventana visible
+            dialog.setVisible(true);
+            dialog.setSize(495, 680);
+            dialog.setLocationRelativeTo(null);
         }
     }
     
@@ -68,7 +79,12 @@ public class Probabilidades extends javax.swing.JFrame {
     
     private String carta1, carta2;
 
-    private void generarCartas(JLabel label, JLabel label1, JLabel label2, JLabel label3) {
+    private void generarCartas(JLabel label, JLabel label1, JLabel label2, JLabel label3, JLabel labeldialog, JLabel labeldialog1, 
+            JLabel labeldialog2, JLabel labeldialog3, JLabel labeldialog4, JLabel labeldialog5, JLabel labeldialog6, JLabel labeldialog7, JLabel labeldialog8, 
+            JTextField campo, JTextField campo1, JButton respuestacorrecta) {
+            
+        respuestacorrecta.setVisible(false);
+        
         // Genera nuevas cartas
         Random random = new Random();
         carta1 = obtenerCartaAleatoria(random);
@@ -77,29 +93,104 @@ public class Probabilidades extends javax.swing.JFrame {
         // Actualiza las etiquetas con las nuevas cartas
         label.setText(carta1);
         
+        if (sonIguales(labeldialog, LabelCarta1SucesosDialog)) {
+            labeldialog.setText("A = "+ carta1);
+            labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
+            labeldialog2.setIcon(laplaceprobabilidad());
+            labeldialog2.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog1.setText("B = " + carta2);
+            labeldialog3.setText("P(" + carta2 + ") = P(B) = ");
+            labeldialog3.setIcon(laplaceprobabilidad());
+            labeldialog3.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog4.setText("P(" + carta1 + " " + "Ó" + " " + carta2 + ") = P(A ∪ B) = P(A) +  P(B) - P(A ∩ B)");
+            labeldialog5.setText("= ");
+            labeldialog5.setIcon(laplaceprobabilidad());
+            labeldialog5.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog6.setText("+ ");
+            labeldialog6.setIcon(laplaceprobabilidad());
+            labeldialog6.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog7.setText(" - 0 = ");
+            labeldialog7.setIcon(sumaprobabilidad1());
+            labeldialog7.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog8.setText("= ");
+            labeldialog8.setIcon(sumaprobabilidad1());
+            labeldialog8.setHorizontalTextPosition(JLabel.LEFT);
+        }
+        
+        if (sonIguales(labeldialog, LabelCarta1SucesosDialog1)) {
+            labeldialog.setText("A = "+ carta1);
+            labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
+            labeldialog2.setIcon(laplaceprobabilidad());
+            labeldialog2.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog1.setText("B = " + carta2);
+            labeldialog3.setText("P(" + carta2 + ") = P(B) = ");
+            labeldialog3.setIcon(laplaceprobabilidad());
+            labeldialog3.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog4.setText("P(" + carta1 + " " + "Y" + " " + carta2 + ") = P(A ∩ B) = P(A) *  P(B)");
+            labeldialog5.setText("= ");
+            labeldialog5.setIcon(laplaceprobabilidad());
+            labeldialog5.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog6.setText("* ");
+            labeldialog6.setIcon(laplaceprobabilidad());
+            labeldialog6.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog7.setText("= ");
+            labeldialog7.setIcon(multiplicacionprobabilidad());
+            labeldialog7.setHorizontalTextPosition(JLabel.LEFT);
+            labeldialog8.setText("");
+            
+        }
+        
+        
+        if (sonIguales(labeldialog, LabelCarta1SucesosDialog2)) {
+            labeldialog.setText("A = "+ carta1);
+            labeldialog2.setText("P(" + carta1 + ") = P(A) = ");
+            labeldialog2.setIcon(laplaceprobabilidad());
+            labeldialog1.setText("");
+            labeldialog3.setText("");
+            labeldialog4.setText("");
+            labeldialog5.setText("");
+            labeldialog6.setText("");
+            labeldialog7.setText("");
+            labeldialog8.setText("");
+        }
+        
+        
         // Verifica si label1 no es null antes de intentar actualizarlo
         if (label1 != null) {
             label1.setText(carta2);
         }
+        
         label2.setText("");  // Limpia el resultado de respuesta
-        campoResultado.setText("");  // Limpia el campo de resultado
-        label3.setText("");  
+        campo.setText("");  // Limpia el campo de resultado
+        campo1.setText(""); 
+        label3.setText("");
+        label3.setIcon(null);  
     }
     
-    private void verificarRespuesta(JLabel label, double tolerancia) {
+    private boolean sonIguales(JLabel labelA, JLabel labelB) {
+        // Puedes comparar el texto de los JLabels o cualquier otra propiedad según tus necesidades
+        return labelA.getText().equals(labelB.getText());
+    }
+    
+    private void verificarRespuesta(JLabel label, double regla, JTextField campoCasosFavorables, JTextField campoResultadosPosibles, JButton respuestacorrecta) {
         
         try {
             // Obtiene la respuesta del usuario
-            double respuestaUsuario = Double.parseDouble(campoResultado.getText());
-
+            double casosFavorables = Double.parseDouble(campoCasosFavorables.getText());
+            double resultadosPosibles = Double.parseDouble(campoResultadosPosibles.getText());
+            
             // Calcula el resultado correcto
-            double resultadoCorrecto = calcularsumaprobabilidad();
-
+            double resultadoCorrecto = regla;
+            
+            // Calcula la probabilidad del usuario
+            double probabilidadUsuario = casosFavorables / resultadosPosibles;
+            
             // Comprueba si la respuesta del usuario es correcta o incorrecta
-            if (Math.abs(respuestaUsuario - resultadoCorrecto) <= tolerancia) {
+            if (probabilidadUsuario == resultadoCorrecto) {
                 label.setText("Respuesta Correcta");
             } else {
-                label.setText("Respuesta Incorrecta");
+                label.setText("Respuesta Incorrecta, ¿Deseas saber la respuesta correcta?");
+                respuestacorrecta.setVisible(true);
             }
             
             // Si la entrada ingresada por el usuario no es valida, le pide que ingrese numeros
@@ -107,89 +198,63 @@ public class Probabilidades extends javax.swing.JFrame {
             label.setText("Entrada inválida. Por favor, ingresa solo números.");
         }
     }
-    
-    private void verificarRespuesta1(JLabel label, double tolerancia) {
-        
-        try {
-            double respuestaUsuario = Double.parseDouble(campoResultado1.getText());
 
-            double resultadoCorrecto = calcularmultiplicacionprobabilidad();
-
-            if (Math.abs(respuestaUsuario - resultadoCorrecto) <= tolerancia) {
-                label.setText("Respuesta Correcta");
-            } else {
-                label.setText("Respuesta Incorrecta");
-            }
-
-        } catch (NumberFormatException ex) {
-            label.setText("Entrada inválida. Por favor, ingresa solo números.");
-        }
-    }
-    
-    private void verificarRespuesta2(JLabel label, double tolerancia) {
-        
-        try {
-            double respuestaUsuario = Double.parseDouble(campoResultado2.getText());
-
-            double resultadoCorrecto = calcularlaplaceprobabilidad();
-
-            if (Math.abs(respuestaUsuario - resultadoCorrecto) <= tolerancia) {
-                label.setText("Respuesta Correcta");
-            } else {
-                label.setText("Respuesta Incorrecta");
-            }
-
-        } catch (NumberFormatException ex) {
-            label.setText("Entrada inválida. Por favor, ingresa solo números.");
-        }
-    }
-    
-    private void mostrarRespuestaCorrecta() {
-        double resultadoCorrecto = calcularsumaprobabilidad(); 
-        LabelRespuestaCorrecta.setText("Respuesta Correcta: " + resultadoCorrecto);
-    }
-    
-    private void mostrarRespuestaCorrecta1() {
-        double resultadoCorrecto = calcularmultiplicacionprobabilidad(); 
-        LabelRespuestaCorrecta1.setText("Respuesta Correcta: " + resultadoCorrecto);
-    }
-    
-    private void mostrarRespuestaCorrecta2() {  
-        double resultadoCorrecto = calcularlaplaceprobabilidad(); 
-        LabelRespuestaCorrecta2.setText("Respuesta Correcta: " + resultadoCorrecto);
-    }
-        
-    private double calcularmultiplicacionprobabilidad() {
-        int cartasTotales = 48;  // Un mazo español tiene 48 cartas
-
-        // Probabilidad de sacar cada carta
-        double probabilidadCarta1 = 1.0 / cartasTotales;
-        double probabilidadCarta2 = 1.0 / cartasTotales;
-
-        // Multiplica de las probabilidades de sacar carta1 o carta2
-        double resultadoCorrecto = probabilidadCarta1 * probabilidadCarta2;
-
-        return resultadoCorrecto;
-    }
-    
-    private double calcularsumaprobabilidad() {
-        int cartasTotales = 48;
-
-        double probabilidadCarta1 = 1.0 / cartasTotales;
-        double probabilidadCarta2 = 1.0 / cartasTotales;
-
-        // Suma de las probabilidades de sacar carta1 o carta2
-        double resultadoCorrecto = probabilidadCarta1 + probabilidadCarta2;
-
-        return resultadoCorrecto;
-    }
-    
     private double calcularlaplaceprobabilidad() {
         int cartasTotales = 48;  
-
         return 1.0 / cartasTotales;
     }
+    
+     private double calcularsumaprobabilidad() {
+        // Si las cartas son iguales, la probabilidad es simplemente la probabilidad de sacar una carta
+        if (carta1.equals(carta2)) {
+            return calcularlaplaceprobabilidad();
+        } else {
+            // Si las cartas son diferentes, calcula la probabilidad de sacar cada carta y suma
+            return calcularlaplaceprobabilidad() + calcularlaplaceprobabilidad();
+        }
+    }
+    
+    private double calcularmultiplicacionprobabilidad() {
+        // Multiplica de las probabilidades de sacar carta1 o carta2
+        double multiplicacion = calcularlaplaceprobabilidad() * calcularlaplaceprobabilidad();
+        return multiplicacion;
+    }
 
+    private ImageIcon laplaceprobabilidad() {
+        ImageIcon laplace = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/LAPLACE CALCULO.png")); 
+        return laplace;
+    }
+    
+    private ImageIcon sumaprobabilidad() {
+        // Si las cartas son iguales, la probabilidad es simplemente la probabilidad de sacar una carta
+        if (carta1.equals(carta2)) {
+            return laplaceprobabilidad();
+        } else {
+            ImageIcon suma = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/SUMA CALCULO.png")); 
+            return suma;
+        }
+    }
+    
+    private ImageIcon sumaprobabilidad1() {
+        ImageIcon suma = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/SUMA CALCULO 1.png")); 
+        return suma;
+    }
+    
+    private ImageIcon multiplicacionprobabilidad() {
+        ImageIcon multiplicacion = new ImageIcon(Probabilidades.class.getResource("/Proyecto/Elementos_Proyecto/MULTIPLICACION CALCULO.png")); 
+        return multiplicacion;
+    }
+    
+    
+    
+    private void mostrarRespuestaCorrecta(JLabel LabelRespuesta, ImageIcon regla) {
+        ImageIcon resultadoCorrecto = regla; 
+        LabelRespuesta.setText("Respuesta Correcta: ");
+        LabelRespuesta.setHorizontalTextPosition(JLabel.LEFT);
+        LabelRespuesta.setIcon(resultadoCorrecto);
+    }
+   
+    
     private String obtenerCartaAleatoria(Random random) {
         // Establece las listas de las cartas
         String[] palos = {"Bastos", "Espadas", "Copas", "Oros"};
@@ -269,40 +334,83 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplosumaFrame = new javax.swing.JFrame();
         atrasBoton10 = new javax.swing.JButton();
         respuestacorrectaBoton = new javax.swing.JButton();
-        nuevoejemploBoton = new javax.swing.JButton();
-        campoResultado = new javax.swing.JTextField();
+        nuevascartasBoton = new javax.swing.JButton();
+        explicacionBoton = new javax.swing.JButton();
+        verificarrespuestaBoton = new javax.swing.JButton();
+        campoResultadoSuma = new javax.swing.JTextField();
+        campoResultadoSuma1 = new javax.swing.JTextField();
         LabelRespuestaCorrecta = new javax.swing.JLabel();
         LabelResultadoRespuesta = new javax.swing.JLabel();
         LabelCarta1 = new javax.swing.JLabel();
         LabelCarta2 = new javax.swing.JLabel();
         LabelEjemploSuma = new javax.swing.JLabel();
+        explicacionsumaDialog = new javax.swing.JDialog();
+        LabelCarta1SucesosDialog = new javax.swing.JLabel();
+        LabelCarta2SucesosDialog = new javax.swing.JLabel();
+        LabelCarta1RespectivasDialog = new javax.swing.JLabel();
+        LabelCarta2RespectivasDialog = new javax.swing.JLabel();
+        LabelCarta1o2Dialog = new javax.swing.JLabel();
+        LabelSumaLaplace = new javax.swing.JLabel();
+        LabelSumaLaplace1 = new javax.swing.JLabel();
+        LabelSumaNormal = new javax.swing.JLabel();
+        LabelSumaFinal = new javax.swing.JLabel();
+        LabelExplicacionSuma = new javax.swing.JLabel();
         multiplicacionFrame = new javax.swing.JFrame();
         atrasBoton11 = new javax.swing.JButton();
         ejemploBoton1 = new javax.swing.JButton();
         LabelMultiplicacion = new javax.swing.JLabel();
         ejemplomultiplicacionFrame = new javax.swing.JFrame();
         atrasBoton12 = new javax.swing.JButton();
-        campoResultado1 = new javax.swing.JTextField();
-        LabelResultadoRespuesta1 = new javax.swing.JLabel();
+        campoResultadoMultiplicacion = new javax.swing.JTextField();
+        campoResultadoMultiplicacion1 = new javax.swing.JTextField();
+        verificarrespuestaBoton1 = new javax.swing.JButton();
+        explicacionBoton1 = new javax.swing.JButton();
+        nuevascartasBoton1 = new javax.swing.JButton();
+        respuestacorrectaBoton1 = new javax.swing.JButton();
         LabelRespuestaCorrecta1 = new javax.swing.JLabel();
+        LabelResultadoRespuesta1 = new javax.swing.JLabel();
         LabelCarta3 = new javax.swing.JLabel();
         LabelCarta4 = new javax.swing.JLabel();
-        nuevoejemploBoton1 = new javax.swing.JButton();
-        respuestacorrectaBoton1 = new javax.swing.JButton();
         LabelEjemploMultiplicacion = new javax.swing.JLabel();
+        explicacionmultiplicacionDialog = new javax.swing.JDialog();
+        LabelCarta1SucesosDialog1 = new javax.swing.JLabel();
+        LabelCarta2SucesosDialog1 = new javax.swing.JLabel();
+        LabelCarta1RespectivasDialog1 = new javax.swing.JLabel();
+        LabelCarta2RespectivasDialog1 = new javax.swing.JLabel();
+        LabelCarta1y2Dialog = new javax.swing.JLabel();
+        LabelMultiplicacionLaplace = new javax.swing.JLabel();
+        LabelMultiplicacionLaplace1 = new javax.swing.JLabel();
+        LabelMultiplicacionFinal = new javax.swing.JLabel();
+        LabelExplicacionMultiplicacion = new javax.swing.JLabel();
+        relleno = new javax.swing.JLabel();
         laplaceFrame = new javax.swing.JFrame();
         atrasBoton13 = new javax.swing.JButton();
         ejemploBoton2 = new javax.swing.JButton();
         LabelLaplace = new javax.swing.JLabel();
         ejemplolaplaceFrame = new javax.swing.JFrame();
         atrasBoton14 = new javax.swing.JButton();
-        respuestacorrectaBoton2 = new javax.swing.JButton();
-        nuevoejemploBoton2 = new javax.swing.JButton();
         LabelCarta5 = new javax.swing.JLabel();
-        LabelRespuestaCorrecta2 = new javax.swing.JLabel();
         LabelResultadoRespuesta2 = new javax.swing.JLabel();
-        campoResultado2 = new javax.swing.JTextField();
+        LabelRespuestaCorrecta2 = new javax.swing.JLabel();
+        respuestacorrectaBoton2 = new javax.swing.JButton();
+        nuevascartasBoton2 = new javax.swing.JButton();
+        explicacionBoton2 = new javax.swing.JButton();
+        verificarrespuestaBoton2 = new javax.swing.JButton();
+        campoResultadoLaplace = new javax.swing.JTextField();
+        campoResultadoLaplace1 = new javax.swing.JTextField();
         LabelEjemploLaplace = new javax.swing.JLabel();
+        relleno8 = new javax.swing.JLabel();
+        explicacionlaplaceDialog = new javax.swing.JDialog();
+        LabelCarta1SucesosDialog2 = new javax.swing.JLabel();
+        LabelCarta1RespectivasDialog2 = new javax.swing.JLabel();
+        LabelExplicacionLaplace = new javax.swing.JLabel();
+        relleno1 = new javax.swing.JLabel();
+        relleno2 = new javax.swing.JLabel();
+        relleno3 = new javax.swing.JLabel();
+        relleno4 = new javax.swing.JLabel();
+        relleno5 = new javax.swing.JLabel();
+        relleno6 = new javax.swing.JLabel();
+        relleno7 = new javax.swing.JLabel();
         conceptosFrame = new javax.swing.JFrame();
         atrasBoton15 = new javax.swing.JButton();
         siguienteBoton3 = new javax.swing.JButton();
@@ -323,7 +431,11 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplonormalFrame = new javax.swing.JFrame();
         atrasBoton23 = new javax.swing.JButton();
         tablaBoton = new javax.swing.JButton();
-        LabelEjemploContinua1 = new javax.swing.JLabel();
+        comoutilizartablaBoton = new javax.swing.JButton();
+        LabelEjemploNormal = new javax.swing.JLabel();
+        comoutilizartablaFrame = new javax.swing.JFrame();
+        atrasBoton24 = new javax.swing.JButton();
+        LabelEjemploNormal1 = new javax.swing.JLabel();
         ejemplodiscretaFrame = new javax.swing.JFrame();
         atrasBoton19 = new javax.swing.JButton();
         permutacionesBoton = new javax.swing.JButton();
@@ -638,7 +750,7 @@ public class Probabilidades extends javax.swing.JFrame {
                 sumaBotonActionPerformed(evt);
             }
         });
-        reglasFrame.getContentPane().add(sumaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 340, 120));
+        reglasFrame.getContentPane().add(sumaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 410, 340, 120));
 
         multiplicacionBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MULTIPLICACION boton.png"))); // NOI18N
         multiplicacionBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -646,7 +758,7 @@ public class Probabilidades extends javax.swing.JFrame {
                 multiplicacionBotonActionPerformed(evt);
             }
         });
-        reglasFrame.getContentPane().add(multiplicacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 340, 120));
+        reglasFrame.getContentPane().add(multiplicacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 550, 340, 120));
 
         laplaceBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/LAPLACE boton.png"))); // NOI18N
         laplaceBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -654,7 +766,7 @@ public class Probabilidades extends javax.swing.JFrame {
                 laplaceBotonActionPerformed(evt);
             }
         });
-        reglasFrame.getContentPane().add(laplaceBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 340, 120));
+        reglasFrame.getContentPane().add(laplaceBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 340, 120));
 
         LabelReglas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/REGLAS.jpg"))); // NOI18N
         reglasFrame.getContentPane().add(LabelReglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -704,41 +816,82 @@ public class Probabilidades extends javax.swing.JFrame {
                 respuestacorrectaBotonActionPerformed(evt);
             }
         });
-        ejemplosumaFrame.getContentPane().add(respuestacorrectaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 120, 60));
+        ejemplosumaFrame.getContentPane().add(respuestacorrectaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 120, 60));
 
-        nuevoejemploBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/NUEVO_EJEMPLO.png"))); // NOI18N
-        nuevoejemploBoton.addActionListener(new java.awt.event.ActionListener() {
+        nuevascartasBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CAMBIAR CARTAS boton.png"))); // NOI18N
+        nuevascartasBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoejemploBotonActionPerformed(evt);
+                nuevascartasBotonActionPerformed(evt);
             }
         });
-        ejemplosumaFrame.getContentPane().add(nuevoejemploBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
+        ejemplosumaFrame.getContentPane().add(nuevascartasBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
 
-        campoResultado.setText("Ingresa un número y haz click en Enter");
-        campoResultado.addActionListener(new java.awt.event.ActionListener() {
+        explicacionBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION boton.png"))); // NOI18N
+        explicacionBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoResultadoActionPerformed(evt);
+                explicacionBotonActionPerformed(evt);
             }
         });
-        ejemplosumaFrame.getContentPane().add(campoResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 230, 30));
+        ejemplosumaFrame.getContentPane().add(explicacionBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 120, 60));
+
+        verificarrespuestaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VERIFICAR RESPUESTA boton.png"))); // NOI18N
+        verificarrespuestaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarrespuestaBotonActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(verificarrespuestaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 120, 60));
+
+        campoResultadoSuma.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoSuma.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoSuma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultadoSumaActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(campoResultadoSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 80, 40));
+
+        campoResultadoSuma1.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoSuma1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoSuma1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultadoSuma1ActionPerformed(evt);
+            }
+        });
+        ejemplosumaFrame.getContentPane().add(campoResultadoSuma1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 80, 40));
 
         LabelRespuestaCorrecta.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplosumaFrame.getContentPane().add(LabelRespuestaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 430, 180, 20));
+        ejemplosumaFrame.getContentPane().add(LabelRespuestaCorrecta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, 230, 60));
 
         LabelResultadoRespuesta.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplosumaFrame.getContentPane().add(LabelResultadoRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 590, 20));
+        ejemplosumaFrame.getContentPane().add(LabelResultadoRespuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 590, 20));
 
-        LabelCarta1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta1.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 16)); // NOI18N
         LabelCarta1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        ejemplosumaFrame.getContentPane().add(LabelCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 270, 40));
+        ejemplosumaFrame.getContentPane().add(LabelCarta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, 40));
 
-        LabelCarta2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        LabelCarta2.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 16)); // NOI18N
         LabelCarta2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ejemplosumaFrame.getContentPane().add(LabelCarta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 300, 40));
+        ejemplosumaFrame.getContentPane().add(LabelCarta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 220, 40));
         LabelCarta2.setText(carta2);
 
         LabelEjemploSuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO SUMA.jpg"))); // NOI18N
         ejemplosumaFrame.getContentPane().add(LabelEjemploSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        explicacionsumaDialog.setResizable(false);
+        explicacionsumaDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        explicacionsumaDialog.getContentPane().add(LabelCarta1SucesosDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 50));
+        explicacionsumaDialog.getContentPane().add(LabelCarta2SucesosDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 430, 50));
+        explicacionsumaDialog.getContentPane().add(LabelCarta1RespectivasDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 430, 60));
+        explicacionsumaDialog.getContentPane().add(LabelCarta2RespectivasDialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 430, 60));
+        explicacionsumaDialog.getContentPane().add(LabelCarta1o2Dialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 440, 30));
+        explicacionsumaDialog.getContentPane().add(LabelSumaLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 50, 40));
+        explicacionsumaDialog.getContentPane().add(LabelSumaLaplace1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 50, 40));
+        explicacionsumaDialog.getContentPane().add(LabelSumaNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 70, 40));
+        explicacionsumaDialog.getContentPane().add(LabelSumaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 50, 40));
+
+        LabelExplicacionSuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION SUMA.jpg"))); // NOI18N
+        explicacionsumaDialog.getContentPane().add(LabelExplicacionSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 640));
 
         multiplicacionFrame.setIconImage(getIconImage());
         multiplicacionFrame.setResizable(false);
@@ -779,35 +932,47 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         ejemplomultiplicacionFrame.getContentPane().add(atrasBoton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
-        campoResultado1.addActionListener(new java.awt.event.ActionListener() {
+        campoResultadoMultiplicacion.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoMultiplicacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoMultiplicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoResultado1ActionPerformed(evt);
+                campoResultadoMultiplicacionActionPerformed(evt);
             }
         });
-        ejemplomultiplicacionFrame.getContentPane().add(campoResultado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 230, 30));
+        ejemplomultiplicacionFrame.getContentPane().add(campoResultadoMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 80, 40));
 
-        LabelResultadoRespuesta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplomultiplicacionFrame.getContentPane().add(LabelResultadoRespuesta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 590, 20));
-
-        LabelRespuestaCorrecta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplomultiplicacionFrame.getContentPane().add(LabelRespuestaCorrecta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 230, 30));
-
-        LabelCarta3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        LabelCarta3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 310, 300, 40));
-        LabelCarta2.setText(carta2);
-
-        LabelCarta4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        LabelCarta4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 270, 40));
-
-        nuevoejemploBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/NUEVO_EJEMPLO.png"))); // NOI18N
-        nuevoejemploBoton1.addActionListener(new java.awt.event.ActionListener() {
+        campoResultadoMultiplicacion1.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoMultiplicacion1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoMultiplicacion1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoejemploBoton1ActionPerformed(evt);
+                campoResultadoMultiplicacion1ActionPerformed(evt);
             }
         });
-        ejemplomultiplicacionFrame.getContentPane().add(nuevoejemploBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
+        ejemplomultiplicacionFrame.getContentPane().add(campoResultadoMultiplicacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 80, 40));
+
+        verificarrespuestaBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VERIFICAR RESPUESTA boton.png"))); // NOI18N
+        verificarrespuestaBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarrespuestaBoton1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(verificarrespuestaBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 120, 60));
+
+        explicacionBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION boton.png"))); // NOI18N
+        explicacionBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                explicacionBoton1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(explicacionBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 120, 60));
+
+        nuevascartasBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CAMBIAR CARTAS boton.png"))); // NOI18N
+        nuevascartasBoton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevascartasBoton1ActionPerformed(evt);
+            }
+        });
+        ejemplomultiplicacionFrame.getContentPane().add(nuevascartasBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
 
         respuestacorrectaBoton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MOSTRAR RESPUESTA CORRECTA.png"))); // NOI18N
         respuestacorrectaBoton1.addActionListener(new java.awt.event.ActionListener() {
@@ -815,10 +980,40 @@ public class Probabilidades extends javax.swing.JFrame {
                 respuestacorrectaBoton1ActionPerformed(evt);
             }
         });
-        ejemplomultiplicacionFrame.getContentPane().add(respuestacorrectaBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 120, 60));
+        ejemplomultiplicacionFrame.getContentPane().add(respuestacorrectaBoton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 120, 60));
+
+        LabelRespuestaCorrecta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplomultiplicacionFrame.getContentPane().add(LabelRespuestaCorrecta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, 230, 60));
+
+        LabelResultadoRespuesta1.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplomultiplicacionFrame.getContentPane().add(LabelResultadoRespuesta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 590, 20));
+
+        LabelCarta3.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 16)); // NOI18N
+        LabelCarta3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, 40));
+
+        LabelCarta4.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 16)); // NOI18N
+        LabelCarta4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ejemplomultiplicacionFrame.getContentPane().add(LabelCarta4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 220, 40));
+        LabelCarta2.setText(carta2);
 
         LabelEjemploMultiplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO MULTIPLICACION.jpg"))); // NOI18N
         ejemplomultiplicacionFrame.getContentPane().add(LabelEjemploMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        explicacionmultiplicacionDialog.setResizable(false);
+        explicacionmultiplicacionDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        explicacionmultiplicacionDialog.getContentPane().add(LabelCarta1SucesosDialog1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 50));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelCarta2SucesosDialog1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 430, 50));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelCarta1RespectivasDialog1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 430, 60));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelCarta2RespectivasDialog1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 430, 60));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelCarta1y2Dialog, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 440, 30));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelMultiplicacionLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 50, 40));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelMultiplicacionLaplace1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 50, 40));
+        explicacionmultiplicacionDialog.getContentPane().add(LabelMultiplicacionFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 520, 90, 40));
+
+        LabelExplicacionMultiplicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION MULTIPLICACION.jpg"))); // NOI18N
+        explicacionmultiplicacionDialog.getContentPane().add(LabelExplicacionMultiplicacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 640));
+        explicacionmultiplicacionDialog.getContentPane().add(relleno, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
 
         laplaceFrame.setIconImage(getIconImage());
         laplaceFrame.setResizable(false);
@@ -859,41 +1054,86 @@ public class Probabilidades extends javax.swing.JFrame {
         });
         ejemplolaplaceFrame.getContentPane().add(atrasBoton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 60));
 
+        LabelCarta5.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 16)); // NOI18N
+        LabelCarta5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        ejemplolaplaceFrame.getContentPane().add(LabelCarta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 220, 40));
+
+        LabelResultadoRespuesta2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplolaplaceFrame.getContentPane().add(LabelResultadoRespuesta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 530, 590, 20));
+
+        LabelRespuestaCorrecta2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        ejemplolaplaceFrame.getContentPane().add(LabelRespuestaCorrecta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, 230, 60));
+
         respuestacorrectaBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/MOSTRAR RESPUESTA CORRECTA.png"))); // NOI18N
         respuestacorrectaBoton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 respuestacorrectaBoton2ActionPerformed(evt);
             }
         });
-        ejemplolaplaceFrame.getContentPane().add(respuestacorrectaBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 420, 120, 60));
+        ejemplolaplaceFrame.getContentPane().add(respuestacorrectaBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 120, 60));
 
-        nuevoejemploBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/NUEVO_EJEMPLO.png"))); // NOI18N
-        nuevoejemploBoton2.addActionListener(new java.awt.event.ActionListener() {
+        nuevascartasBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/CAMBIAR CARTAS boton.png"))); // NOI18N
+        nuevascartasBoton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoejemploBoton2ActionPerformed(evt);
+                nuevascartasBoton2ActionPerformed(evt);
             }
         });
-        ejemplolaplaceFrame.getContentPane().add(nuevoejemploBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
+        ejemplolaplaceFrame.getContentPane().add(nuevascartasBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 120, 60));
 
-        LabelCarta5.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        LabelCarta5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ejemplolaplaceFrame.getContentPane().add(LabelCarta5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, 200, 40));
-
-        LabelRespuestaCorrecta2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplolaplaceFrame.getContentPane().add(LabelRespuestaCorrecta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, 230, 30));
-
-        LabelResultadoRespuesta2.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        ejemplolaplaceFrame.getContentPane().add(LabelResultadoRespuesta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 590, 20));
-
-        campoResultado2.addActionListener(new java.awt.event.ActionListener() {
+        explicacionBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION boton.png"))); // NOI18N
+        explicacionBoton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoResultado2ActionPerformed(evt);
+                explicacionBoton2ActionPerformed(evt);
             }
         });
-        ejemplolaplaceFrame.getContentPane().add(campoResultado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 230, 30));
+        ejemplolaplaceFrame.getContentPane().add(explicacionBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 120, 60));
+
+        verificarrespuestaBoton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/VERIFICAR RESPUESTA boton.png"))); // NOI18N
+        verificarrespuestaBoton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verificarrespuestaBoton2ActionPerformed(evt);
+            }
+        });
+        ejemplolaplaceFrame.getContentPane().add(verificarrespuestaBoton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 420, 120, 60));
+
+        campoResultadoLaplace.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoLaplace.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoLaplace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultadoLaplaceActionPerformed(evt);
+            }
+        });
+        ejemplolaplaceFrame.getContentPane().add(campoResultadoLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, 80, 40));
+
+        campoResultadoLaplace1.setFont(new java.awt.Font("FiraCode Nerd Font", 0, 18)); // NOI18N
+        campoResultadoLaplace1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        campoResultadoLaplace1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoResultadoLaplace1ActionPerformed(evt);
+            }
+        });
+        ejemplolaplaceFrame.getContentPane().add(campoResultadoLaplace1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 80, 40));
 
         LabelEjemploLaplace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO LAPLACE.jpg"))); // NOI18N
         ejemplolaplaceFrame.getContentPane().add(LabelEjemploLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        relleno8.setText("jLabel1");
+        ejemplolaplaceFrame.getContentPane().add(relleno8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        explicacionlaplaceDialog.setResizable(false);
+        explicacionlaplaceDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        explicacionlaplaceDialog.getContentPane().add(LabelCarta1SucesosDialog2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 50));
+        explicacionlaplaceDialog.getContentPane().add(LabelCarta1RespectivasDialog2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 430, 50));
+
+        LabelExplicacionLaplace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EXPLICACION LAPLACE.jpg"))); // NOI18N
+        explicacionlaplaceDialog.getContentPane().add(LabelExplicacionLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
+        explicacionlaplaceDialog.getContentPane().add(relleno7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
 
         conceptosFrame.setIconImage(getIconImage());
         conceptosFrame.setResizable(false);
@@ -1021,10 +1261,28 @@ public class Probabilidades extends javax.swing.JFrame {
                 tablaBotonActionPerformed(evt);
             }
         });
-        ejemplonormalFrame.getContentPane().add(tablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, 120, 60));
+        ejemplonormalFrame.getContentPane().add(tablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 120, 60));
 
-        LabelEjemploContinua1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISTRIBUCION NORMAL.png"))); // NOI18N
-        ejemplonormalFrame.getContentPane().add(LabelEjemploContinua1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        comoutilizartablaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TABLA EJEMPLO boton.png"))); // NOI18N
+        ejemplonormalFrame.getContentPane().add(comoutilizartablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, 120, 60));
+
+        LabelEjemploNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISTRIBUCION NORMAL.jpg"))); // NOI18N
+        ejemplonormalFrame.getContentPane().add(LabelEjemploNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+
+        comoutilizartablaFrame.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atrasBoton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/ATRAS.png"))); // NOI18N
+        atrasBoton24.setMaximumSize(new java.awt.Dimension(120, 60));
+        atrasBoton24.setMinimumSize(new java.awt.Dimension(120, 60));
+        atrasBoton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasBoton24ActionPerformed(evt);
+            }
+        });
+        comoutilizartablaFrame.getContentPane().add(atrasBoton24, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 60));
+
+        LabelEjemploNormal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/COMO UTILIZAR TABLA.jpg"))); // NOI18N
+        comoutilizartablaFrame.getContentPane().add(LabelEjemploNormal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
         ejemplodiscretaFrame.setIconImage(getIconImage());
         ejemplodiscretaFrame.setResizable(false);
@@ -1046,7 +1304,7 @@ public class Probabilidades extends javax.swing.JFrame {
                 permutacionesBotonActionPerformed(evt);
             }
         });
-        ejemplodiscretaFrame.getContentPane().add(permutacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 400, 120, 60));
+        ejemplodiscretaFrame.getContentPane().add(permutacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 120, 60));
 
         combinacionesBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/COMBINACIONES boton.png"))); // NOI18N
         combinacionesBoton.addActionListener(new java.awt.event.ActionListener() {
@@ -1054,7 +1312,7 @@ public class Probabilidades extends javax.swing.JFrame {
                 combinacionesBotonActionPerformed(evt);
             }
         });
-        ejemplodiscretaFrame.getContentPane().add(combinacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 120, 60));
+        ejemplodiscretaFrame.getContentPane().add(combinacionesBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 460, 120, 60));
 
         LabelEjemploDiscreta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISCRETA.jpg"))); // NOI18N
         ejemplodiscretaFrame.getContentPane().add(LabelEjemploDiscreta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -1280,7 +1538,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBotonActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplosumaFrame, sumaFrame);
-        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta);   
+        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta, 
+                LabelCarta1SucesosDialog,LabelCarta2SucesosDialog, LabelCarta1RespectivasDialog,
+                LabelCarta2RespectivasDialog, LabelCarta1o2Dialog, LabelSumaLaplace, LabelSumaLaplace1,
+                LabelSumaNormal, LabelSumaFinal, campoResultadoSuma, campoResultadoSuma1, respuestacorrectaBoton);
     }//GEN-LAST:event_ejemploBotonActionPerformed
 
     private void atrasBoton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton10ActionPerformed
@@ -1316,7 +1577,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton1ActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplomultiplicacionFrame, multiplicacionFrame);
-        generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta1, LabelRespuestaCorrecta1);
+        generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta1, LabelRespuestaCorrecta1, 
+                LabelCarta1SucesosDialog1,LabelCarta2SucesosDialog1, LabelCarta1RespectivasDialog1,
+                LabelCarta2RespectivasDialog1, LabelCarta1y2Dialog, LabelMultiplicacionLaplace, LabelMultiplicacionLaplace1,
+                LabelMultiplicacionFinal, relleno, campoResultadoMultiplicacion, campoResultadoMultiplicacion1, respuestacorrectaBoton1);
     }//GEN-LAST:event_ejemploBoton1ActionPerformed
 
     private void atrasBoton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton13ActionPerformed
@@ -1327,7 +1591,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton2ActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplolaplaceFrame, laplaceFrame);
-        generarCartas(LabelCarta5, null, LabelResultadoRespuesta2, LabelRespuestaCorrecta2);
+        generarCartas(LabelCarta5, relleno8, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
+                LabelCarta1SucesosDialog2,relleno1, LabelCarta1RespectivasDialog2,
+                relleno2, relleno3, relleno4, relleno5,
+                relleno6, relleno7, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
     }//GEN-LAST:event_ejemploBoton2ActionPerformed
 
     private void atrasBoton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton14ActionPerformed
@@ -1385,51 +1652,22 @@ public class Probabilidades extends javax.swing.JFrame {
         configFrame.especificacionesFrame(iniciarFrame, ejerciciosFrame); 
     }//GEN-LAST:event_atrasBoton20ActionPerformed
 
-    private void campoResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoActionPerformed
+    private void campoResultadoSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoSumaActionPerformed
         // TODO add your handling code here:
-        // Configurar el campo de texto para verificar el resultado al presionar "Enter"    
-        verificarRespuesta(LabelResultadoRespuesta, 0.05);
-    }//GEN-LAST:event_campoResultadoActionPerformed
+    }//GEN-LAST:event_campoResultadoSumaActionPerformed
 
     private void respuestacorrectaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBotonActionPerformed
         // TODO add your handling code here:
-        mostrarRespuestaCorrecta();
+        mostrarRespuestaCorrecta(LabelRespuestaCorrecta, sumaprobabilidad());
     }//GEN-LAST:event_respuestacorrectaBotonActionPerformed
 
-    private void nuevoejemploBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoejemploBotonActionPerformed
+    private void nuevascartasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevascartasBotonActionPerformed
         // TODO add your handling code here:
-        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta);    
-    }//GEN-LAST:event_nuevoejemploBotonActionPerformed
-
-    private void campoResultado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultado1ActionPerformed
-        // TODO add your handling code here:
-        verificarRespuesta1(LabelResultadoRespuesta1, 4.3403);
-    }//GEN-LAST:event_campoResultado1ActionPerformed
-
-    private void nuevoejemploBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoejemploBoton1ActionPerformed
-        // TODO add your handling code here:
-        generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta1, LabelRespuestaCorrecta1);
-    }//GEN-LAST:event_nuevoejemploBoton1ActionPerformed
-
-    private void respuestacorrectaBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBoton1ActionPerformed
-        // TODO add your handling code here:
-        mostrarRespuestaCorrecta1();
-    }//GEN-LAST:event_respuestacorrectaBoton1ActionPerformed
-
-    private void respuestacorrectaBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBoton2ActionPerformed
-        // TODO add your handling code here:
-        mostrarRespuestaCorrecta2();
-    }//GEN-LAST:event_respuestacorrectaBoton2ActionPerformed
-
-    private void nuevoejemploBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoejemploBoton2ActionPerformed
-        // TODO add your handling code here:
-        generarCartas(LabelCarta5, null, LabelResultadoRespuesta2, LabelRespuestaCorrecta2);
-    }//GEN-LAST:event_nuevoejemploBoton2ActionPerformed
-
-    private void campoResultado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultado2ActionPerformed
-        // TODO add your handling code here:
-        verificarRespuesta2(LabelResultadoRespuesta2, 0.0208);
-    }//GEN-LAST:event_campoResultado2ActionPerformed
+        generarCartas(LabelCarta1, LabelCarta2, LabelResultadoRespuesta, LabelRespuestaCorrecta, 
+                LabelCarta1SucesosDialog,LabelCarta2SucesosDialog, LabelCarta1RespectivasDialog,
+                LabelCarta2RespectivasDialog, LabelCarta1o2Dialog, LabelSumaLaplace, LabelSumaLaplace1,
+                LabelSumaNormal, LabelSumaFinal, campoResultadoSuma, campoResultadoSuma1, respuestacorrectaBoton);
+    }//GEN-LAST:event_nuevascartasBotonActionPerformed
 
     private void permutacionesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_permutacionesBotonActionPerformed
         // TODO add your handling code here:
@@ -1478,6 +1716,91 @@ public class Probabilidades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tablaBotonActionPerformed
 
+    private void atrasBoton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasBoton24ActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(comoutilizartablaFrame, ejemplonormalFrame);
+    }//GEN-LAST:event_atrasBoton24ActionPerformed
+
+    private void explicacionBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicacionBotonActionPerformed
+        // TODO add your handling code here:
+        configDialog.especificacionesDialog(explicacionsumaDialog);
+    }//GEN-LAST:event_explicacionBotonActionPerformed
+
+    private void verificarrespuestaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarrespuestaBotonActionPerformed
+        // TODO add your handling code here:
+        verificarRespuesta(LabelResultadoRespuesta, calcularsumaprobabilidad(), campoResultadoSuma, campoResultadoSuma1, respuestacorrectaBoton);
+    }//GEN-LAST:event_verificarrespuestaBotonActionPerformed
+
+    private void campoResultadoSuma1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoSuma1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoResultadoSuma1ActionPerformed
+
+    private void campoResultadoMultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoMultiplicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoResultadoMultiplicacionActionPerformed
+
+    private void campoResultadoMultiplicacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoMultiplicacion1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_campoResultadoMultiplicacion1ActionPerformed
+
+    private void verificarrespuestaBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarrespuestaBoton1ActionPerformed
+        // TODO add your handling code here:
+        verificarRespuesta(LabelResultadoRespuesta1, calcularmultiplicacionprobabilidad(), campoResultadoMultiplicacion, campoResultadoMultiplicacion1, respuestacorrectaBoton1);
+    }//GEN-LAST:event_verificarrespuestaBoton1ActionPerformed
+
+    private void explicacionBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicacionBoton1ActionPerformed
+        // TODO add your handling code here:
+        configDialog.especificacionesDialog(explicacionmultiplicacionDialog);
+    }//GEN-LAST:event_explicacionBoton1ActionPerformed
+
+    private void nuevascartasBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevascartasBoton1ActionPerformed
+        // TODO add your handling code here:
+        generarCartas(LabelCarta3, LabelCarta4, LabelResultadoRespuesta1, LabelRespuestaCorrecta1, 
+                LabelCarta1SucesosDialog1,LabelCarta2SucesosDialog1, LabelCarta1RespectivasDialog1,
+                LabelCarta2RespectivasDialog1, LabelCarta1y2Dialog, LabelMultiplicacionLaplace, LabelMultiplicacionLaplace1,
+                LabelMultiplicacionFinal, relleno, campoResultadoMultiplicacion, campoResultadoMultiplicacion1, respuestacorrectaBoton1);
+    }//GEN-LAST:event_nuevascartasBoton1ActionPerformed
+
+    private void respuestacorrectaBoton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBoton1ActionPerformed
+        // TODO add your handling code here:
+        mostrarRespuestaCorrecta(LabelRespuestaCorrecta1, multiplicacionprobabilidad());
+    }//GEN-LAST:event_respuestacorrectaBoton1ActionPerformed
+
+    private void respuestacorrectaBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respuestacorrectaBoton2ActionPerformed
+        // TODO add your handling code here:
+        mostrarRespuestaCorrecta(LabelRespuestaCorrecta2, laplaceprobabilidad());
+    }//GEN-LAST:event_respuestacorrectaBoton2ActionPerformed
+
+    private void nuevascartasBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevascartasBoton2ActionPerformed
+        // TODO add your handling code here:
+        generarCartas(LabelCarta5, relleno8, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
+                LabelCarta1SucesosDialog2,relleno1, LabelCarta1RespectivasDialog2,
+                relleno2, relleno3, relleno4, relleno5,
+                relleno6, relleno7, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
+    
+    }//GEN-LAST:event_nuevascartasBoton2ActionPerformed
+
+    private void explicacionBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_explicacionBoton2ActionPerformed
+        // TODO add your handling code here:
+        explicacionlaplaceDialog.setVisible(true);
+        explicacionlaplaceDialog.setSize(495, 470);
+        explicacionlaplaceDialog.setLocationRelativeTo(null);
+    }//GEN-LAST:event_explicacionBoton2ActionPerformed
+
+    private void verificarrespuestaBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verificarrespuestaBoton2ActionPerformed
+        // TODO add your handling code here:
+        verificarRespuesta(LabelResultadoRespuesta2, calcularlaplaceprobabilidad(), campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
+    }//GEN-LAST:event_verificarrespuestaBoton2ActionPerformed
+
+    private void campoResultadoLaplaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoLaplaceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoResultadoLaplaceActionPerformed
+
+    private void campoResultadoLaplace1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoResultadoLaplace1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoResultadoLaplace1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1509,7 +1832,19 @@ public class Probabilidades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LabelCarta1;
+    private javax.swing.JLabel LabelCarta1RespectivasDialog;
+    private javax.swing.JLabel LabelCarta1RespectivasDialog1;
+    private javax.swing.JLabel LabelCarta1RespectivasDialog2;
+    private javax.swing.JLabel LabelCarta1SucesosDialog;
+    private javax.swing.JLabel LabelCarta1SucesosDialog1;
+    private javax.swing.JLabel LabelCarta1SucesosDialog2;
+    private javax.swing.JLabel LabelCarta1o2Dialog;
+    private javax.swing.JLabel LabelCarta1y2Dialog;
     public javax.swing.JLabel LabelCarta2;
+    private javax.swing.JLabel LabelCarta2RespectivasDialog;
+    private javax.swing.JLabel LabelCarta2RespectivasDialog1;
+    private javax.swing.JLabel LabelCarta2SucesosDialog;
+    private javax.swing.JLabel LabelCarta2SucesosDialog1;
     public javax.swing.JLabel LabelCarta3;
     public javax.swing.JLabel LabelCarta4;
     public javax.swing.JLabel LabelCarta5;
@@ -1519,11 +1854,15 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JLabel LabelCreditos;
     private javax.swing.JLabel LabelDistribucion;
     private javax.swing.JLabel LabelEjemploContinua;
-    private javax.swing.JLabel LabelEjemploContinua1;
     private javax.swing.JLabel LabelEjemploDiscreta;
     private javax.swing.JLabel LabelEjemploLaplace;
     private javax.swing.JLabel LabelEjemploMultiplicacion;
+    private javax.swing.JLabel LabelEjemploNormal;
+    private javax.swing.JLabel LabelEjemploNormal1;
     private javax.swing.JLabel LabelEjemploSuma;
+    private javax.swing.JLabel LabelExplicacionLaplace;
+    private javax.swing.JLabel LabelExplicacionMultiplicacion;
+    private javax.swing.JLabel LabelExplicacionSuma;
     private javax.swing.JLabel LabelHistoria;
     private javax.swing.JLabel LabelHistoria1;
     private javax.swing.JLabel LabelHistoria2;
@@ -1532,6 +1871,9 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JLabel LabelIniciar;
     private javax.swing.JLabel LabelLaplace;
     private javax.swing.JLabel LabelMultiplicacion;
+    private javax.swing.JLabel LabelMultiplicacionFinal;
+    private javax.swing.JLabel LabelMultiplicacionLaplace;
+    private javax.swing.JLabel LabelMultiplicacionLaplace1;
     private javax.swing.JLabel LabelPag1;
     private javax.swing.JLabel LabelPag2;
     private javax.swing.JLabel LabelPag3;
@@ -1547,6 +1889,10 @@ public class Probabilidades extends javax.swing.JFrame {
     private static javax.swing.JLabel LabelResultadoRespuesta1;
     private static javax.swing.JLabel LabelResultadoRespuesta2;
     private javax.swing.JLabel LabelSuma;
+    private javax.swing.JLabel LabelSumaFinal;
+    private javax.swing.JLabel LabelSumaLaplace;
+    private javax.swing.JLabel LabelSumaLaplace1;
+    private javax.swing.JLabel LabelSumaNormal;
     private javax.swing.JLabel LabelTeoria;
     private javax.swing.JButton anteriorBoton4;
     private javax.swing.JButton atrasBoton;
@@ -1566,6 +1912,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton atrasBoton21;
     private javax.swing.JButton atrasBoton22;
     private javax.swing.JButton atrasBoton23;
+    private javax.swing.JButton atrasBoton24;
     private javax.swing.JButton atrasBoton3;
     private javax.swing.JButton atrasBoton4;
     private javax.swing.JButton atrasBoton5;
@@ -1573,11 +1920,16 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton atrasBoton7;
     private javax.swing.JButton atrasBoton8;
     private javax.swing.JButton atrasBoton9;
-    public static javax.swing.JTextField campoResultado;
-    public static javax.swing.JTextField campoResultado1;
-    public static javax.swing.JTextField campoResultado2;
+    public static javax.swing.JTextField campoResultadoLaplace;
+    private javax.swing.JTextField campoResultadoLaplace1;
+    private javax.swing.JTextField campoResultadoMultiplicacion;
+    public static javax.swing.JTextField campoResultadoMultiplicacion1;
+    public static javax.swing.JTextField campoResultadoSuma;
+    private javax.swing.JTextField campoResultadoSuma1;
     private javax.swing.JButton combinacionesBoton;
     private javax.swing.JFrame combinacionesFrame;
+    private javax.swing.JButton comoutilizartablaBoton;
+    private javax.swing.JFrame comoutilizartablaFrame;
     private javax.swing.JButton conceptosBoton;
     private javax.swing.JFrame conceptosFrame;
     private javax.swing.JFrame conceptosFrame1;
@@ -1599,6 +1951,12 @@ public class Probabilidades extends javax.swing.JFrame {
     private static javax.swing.JFrame ejemplosumaFrame;
     private javax.swing.JButton ejerciciosBoton;
     private javax.swing.JFrame ejerciciosFrame;
+    private javax.swing.JButton explicacionBoton;
+    private javax.swing.JButton explicacionBoton1;
+    private javax.swing.JButton explicacionBoton2;
+    private javax.swing.JDialog explicacionlaplaceDialog;
+    private javax.swing.JDialog explicacionmultiplicacionDialog;
+    private javax.swing.JDialog explicacionsumaDialog;
     private javax.swing.JButton historiaBoton;
     private javax.swing.JFrame historiaFrame;
     private javax.swing.JFrame historiaFrame1;
@@ -1611,9 +1969,9 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JFrame laplaceFrame;
     private javax.swing.JButton multiplicacionBoton;
     private javax.swing.JFrame multiplicacionFrame;
-    private javax.swing.JButton nuevoejemploBoton;
-    private javax.swing.JButton nuevoejemploBoton1;
-    private javax.swing.JButton nuevoejemploBoton2;
+    private javax.swing.JButton nuevascartasBoton;
+    private javax.swing.JButton nuevascartasBoton1;
+    private javax.swing.JButton nuevascartasBoton2;
     private javax.swing.JButton pag1Boton;
     private javax.swing.JButton pag2Boton;
     private javax.swing.JButton pag2Boton1;
@@ -1626,6 +1984,15 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JFrame permutacionesFrame;
     private javax.swing.JButton reglasBoton;
     private javax.swing.JFrame reglasFrame;
+    private javax.swing.JLabel relleno;
+    private javax.swing.JLabel relleno1;
+    private javax.swing.JLabel relleno2;
+    private javax.swing.JLabel relleno3;
+    private javax.swing.JLabel relleno4;
+    private javax.swing.JLabel relleno5;
+    private javax.swing.JLabel relleno6;
+    private javax.swing.JLabel relleno7;
+    private javax.swing.JLabel relleno8;
     private javax.swing.JButton respuestacorrectaBoton;
     private javax.swing.JButton respuestacorrectaBoton1;
     private javax.swing.JButton respuestacorrectaBoton2;
@@ -1636,5 +2003,8 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton tablaBoton;
     private javax.swing.JButton teoriaBoton;
     private javax.swing.JFrame teoriaFrame;
+    private javax.swing.JButton verificarrespuestaBoton;
+    private javax.swing.JButton verificarrespuestaBoton1;
+    private javax.swing.JButton verificarrespuestaBoton2;
     // End of variables declaration//GEN-END:variables
 }
