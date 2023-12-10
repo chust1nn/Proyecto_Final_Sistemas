@@ -391,7 +391,6 @@ public class Probabilidades extends javax.swing.JFrame {
         campoResultadoLaplace = new javax.swing.JTextField();
         campoResultadoLaplace1 = new javax.swing.JTextField();
         LabelEjemploLaplace = new javax.swing.JLabel();
-        relleno8 = new javax.swing.JLabel();
         explicacionlaplaceDialog = new javax.swing.JDialog();
         LabelCarta1SucesosDialog2 = new javax.swing.JLabel();
         LabelCarta1RespectivasDialog2 = new javax.swing.JLabel();
@@ -1102,9 +1101,6 @@ public class Probabilidades extends javax.swing.JFrame {
         LabelEjemploLaplace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO LAPLACE.jpg"))); // NOI18N
         ejemplolaplaceFrame.getContentPane().add(LabelEjemploLaplace, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
 
-        relleno8.setText("jLabel1");
-        ejemplolaplaceFrame.getContentPane().add(relleno8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         explicacionlaplaceDialog.setResizable(false);
         explicacionlaplaceDialog.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         explicacionlaplaceDialog.getContentPane().add(LabelCarta1SucesosDialog2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 430, 50));
@@ -1569,7 +1565,7 @@ public class Probabilidades extends javax.swing.JFrame {
     private void ejemploBoton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejemploBoton2ActionPerformed
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejemplolaplaceFrame, laplaceFrame);
-        generarCartas(LabelCarta5, relleno8, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
+        generarCartas(LabelCarta5, relleno, LabelResultadoRespuesta2, LabelRespuestaCorrecta2, 
                 LabelCarta1SucesosDialog2,relleno, LabelCarta1RespectivasDialog2,
                 relleno, relleno, relleno, relleno,
                 relleno, relleno, campoResultadoLaplace, campoResultadoLaplace1, respuestacorrectaBoton2);
@@ -1963,7 +1959,6 @@ public class Probabilidades extends javax.swing.JFrame {
     private javax.swing.JButton reglasBoton;
     private javax.swing.JFrame reglasFrame;
     private javax.swing.JLabel relleno;
-    private javax.swing.JLabel relleno8;
     private javax.swing.JButton respuestacorrectaBoton;
     private javax.swing.JButton respuestacorrectaBoton1;
     private javax.swing.JButton respuestacorrectaBoton2;
