@@ -156,6 +156,10 @@ public class Probabilidades extends javax.swing.JFrame {
             labeldialog8.setText("");
         }
         
+        if (label != null) {
+            label1.setText(carta2);
+        }
+        
         label2.setText("");  // Limpia el resultado de respuesta
         campo.setText("");  // Limpia el campo de resultado
         campo1.setText(""); 
@@ -1245,6 +1249,11 @@ public class Probabilidades extends javax.swing.JFrame {
         ejemplonormalFrame.getContentPane().add(tablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 120, 60));
 
         comoutilizartablaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/TABLA EJEMPLO boton.png"))); // NOI18N
+        comoutilizartablaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comoutilizartablaBotonActionPerformed(evt);
+            }
+        });
         ejemplonormalFrame.getContentPane().add(comoutilizartablaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, 120, 60));
 
         LabelEjemploNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proyecto/Elementos_Proyecto/EJEMPLO DISTRIBUCION NORMAL.jpg"))); // NOI18N
@@ -1844,6 +1853,11 @@ public class Probabilidades extends javax.swing.JFrame {
         // TODO add your handling code here:
         configFrame.especificacionesFrame(ejerciciosFrame, ruletacombinatoriasFrame);
     }//GEN-LAST:event_ruletacombinatoriasBotonActionPerformed
+
+    private void comoutilizartablaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comoutilizartablaBotonActionPerformed
+        // TODO add your handling code here:
+        configFrame.especificacionesFrame(comoutilizartablaFrame, ejemplonormalFrame);
+    }//GEN-LAST:event_comoutilizartablaBotonActionPerformed
 
     /**
      * @param args the command line arguments
